@@ -1,0 +1,612 @@
+/* ===== PROJECTS SECTION ===== */
+.projects {
+  padding: 5rem 0;
+  background: #1a0a2e;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Scanline grid overlay */
+.projects::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 105, 180, 0.03) 2px,
+      rgba(255, 105, 180, 0.03) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 105, 180, 0.03) 2px,
+      rgba(255, 105, 180, 0.03) 4px
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ===== Container ===== */
+.projects .container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== Section Title ===== */
+.projects h2 {
+  text-align: center;
+  font-size: clamp(1.25rem, 4vw, 2.5rem);
+  margin-bottom: 3rem;
+  color: #ff69b4;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  font-family: "Press Start 2P", monospace;
+  text-shadow: 0 0 10px rgba(255, 105, 180, 0.6),
+    0 0 20px rgba(255, 105, 180, 0.3), 3px 3px 0px #2d1b4e;
+  image-rendering: pixelated;
+  letter-spacing: 2px;
+  padding-bottom: 1.5rem;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+.projects h2::after {
+  content: "✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦";
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  height: auto;
+  background: none;
+  border-radius: 0;
+  font-size: clamp(0.4rem, 1.5vw, 0.6rem);
+  color: #ff69b4;
+  letter-spacing: clamp(4px, 2vw, 8px);
+  text-shadow: 0 0 8px rgba(255, 105, 180, 0.5);
+  font-family: "Press Start 2P", monospace;
+  white-space: nowrap;
+  max-width: 90%;
+  overflow: hidden;
+}
+
+/* ===== Projects Grid ===== */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+/* ===== Project Card ===== */
+.project-card {
+  background: linear-gradient(145deg, #2d1b4e, #1a0a2e);
+  border-radius: 4px;
+  padding: 2rem;
+  box-shadow: 0 0 0 2px #ff69b4, 0 0 15px rgba(255, 105, 180, 0.15),
+    inset 0 0 30px rgba(255, 105, 180, 0.05);
+  transition: all 0.3s ease;
+  border-left: none;
+  position: relative;
+  overflow: hidden;
+  image-rendering: pixelated;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Top stripe decoration */
+.project-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: repeating-linear-gradient(
+    90deg,
+    #ff69b4 0px,
+    #ff69b4 8px,
+    #ff1493 8px,
+    #ff1493 16px,
+    #da70d6 16px,
+    #da70d6 24px
+  );
+}
+
+/* Hover arrow indicator */
+.project-card::after {
+  content: "►";
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  font-size: 0.7rem;
+  color: #ff69b4;
+  font-family: "Press Start 2P", monospace;
+  opacity: 0;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 8px rgba(255, 105, 180, 0.5);
+}
+
+.project-card:hover::after {
+  opacity: 1;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 0 2px #ff69b4, 0 0 30px rgba(255, 105, 180, 0.3),
+    0 8px 32px rgba(255, 105, 180, 0.2),
+    inset 0 0 30px rgba(255, 105, 180, 0.08);
+}
+
+/* ===== Card Content ===== */
+.project-card h3 {
+  font-size: clamp(0.85rem, 2.5vw, 1.1rem);
+  color: #ffb6c1;
+  margin-bottom: 1rem;
+  font-family: "Press Start 2P", monospace;
+  line-height: 1.6;
+  text-shadow: 0 0 8px rgba(255, 182, 193, 0.3);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+.project-card p {
+  color: #d8b4d8;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  font-family: "Courier New", monospace;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  flex: 1;
+}
+
+/* ===== Project Year Badge ===== */
+.project-year {
+  display: inline-block;
+  font-family: "Press Start 2P", monospace;
+  font-size: clamp(0.55rem, 1.5vw, 0.65rem);
+  color: #da70d6;
+  background: rgba(218, 112, 214, 0.1);
+  border: 1px solid rgba(218, 112, 214, 0.3);
+  padding: 0.3rem 0.6rem;
+  border-radius: 2px;
+  margin-bottom: 1rem;
+  letter-spacing: 2px;
+  white-space: nowrap;
+}
+
+/* ===== Tech Stack Tags ===== */
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.tech-tag {
+  display: inline-block;
+  background: rgba(255, 105, 180, 0.1);
+  color: #ff69b4;
+  padding: 0.3rem 0.75rem;
+  border-radius: 2px;
+  font-size: clamp(0.55rem, 1.5vw, 0.7rem);
+  font-weight: 600;
+  border: 1px solid rgba(255, 105, 180, 0.3);
+  font-family: "Press Start 2P", monospace;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  image-rendering: pixelated;
+  white-space: nowrap;
+}
+
+.tech-tag:hover {
+  background: rgba(255, 105, 180, 0.2);
+  border-color: #ff69b4;
+  text-shadow: 0 0 8px rgba(255, 105, 180, 0.5);
+}
+
+/* ===== Project Links ===== */
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed rgba(255, 105, 180, 0.2);
+  margin-top: auto;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: #ff69b4;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  padding: 0.5rem 1.2rem;
+  border-radius: 2px;
+  background: rgba(255, 105, 180, 0.08);
+  border: 1px solid rgba(255, 105, 180, 0.3);
+  font-family: "Press Start 2P", monospace;
+  font-size: clamp(0.55rem, 1.5vw, 0.65rem);
+  letter-spacing: 1px;
+  image-rendering: pixelated;
+  flex: 1;
+  min-width: fit-content;
+  text-align: center;
+}
+
+.link:hover {
+  background: #ff69b4;
+  color: #1a0a2e;
+  box-shadow: 0 0 15px rgba(255, 105, 180, 0.4),
+    0 0 30px rgba(255, 105, 180, 0.2);
+  border-color: #ff69b4;
+  text-shadow: none;
+}
+
+/* ===== Pixel Decoration Footer ===== */
+.pixel-decoration {
+  text-align: center;
+  margin-top: 3rem;
+  font-family: "Press Start 2P", monospace;
+  font-size: clamp(0.5rem, 2vw, 0.8rem);
+  color: rgba(255, 105, 180, 0.3);
+  letter-spacing: clamp(6px, 3vw, 12px);
+  position: relative;
+  z-index: 1;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  padding: 0 1rem;
+}
+
+/* ===== RESPONSIVE: Tablet (max-width: 768px) ===== */
+@media (max-width: 768px) {
+  .projects {
+    padding: 4rem 0;
+  }
+
+  .projects .container {
+    width: 92%;
+    padding: 0 0.75rem;
+  }
+
+  .projects h2 {
+    margin-bottom: 2.5rem;
+    letter-spacing: 1px;
+    text-shadow: 0 0 8px rgba(255, 105, 180, 0.5),
+      0 0 15px rgba(255, 105, 180, 0.25), 2px 2px 0px #2d1b4e;
+  }
+
+  .projects h2::after {
+    content: "✦ ✦ ✦ ✦ ✦ ✦ ✦";
+    bottom: -15px;
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+
+  .project-card {
+    padding: 1.5rem;
+  }
+
+  /* Disable hover transforms on touch */
+  .project-card:hover {
+    transform: none;
+  }
+
+  .tech-tag:hover {
+    transform: none;
+  }
+
+  .link:hover {
+    transform: none;
+  }
+
+  /* Show arrow by default on tablet */
+  .project-card::after {
+    opacity: 0.5;
+  }
+
+  .project-links {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .link {
+    width: 100%;
+    padding: 0.6rem 1rem;
+  }
+
+  .tech-stack {
+    gap: 0.4rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .tech-tag {
+    padding: 0.25rem 0.6rem;
+  }
+
+  .pixel-decoration {
+    margin-top: 2.5rem;
+  }
+}
+
+/* ===== RESPONSIVE: Mobile (max-width: 480px) ===== */
+@media (max-width: 480px) {
+  .projects {
+    padding: 3rem 0;
+  }
+
+  .projects .container {
+    width: 94%;
+    padding: 0 0.5rem;
+  }
+
+  .projects h2 {
+    margin-bottom: 2rem;
+    padding-bottom: 1.25rem;
+    letter-spacing: 0.5px;
+    text-shadow: 0 0 6px rgba(255, 105, 180, 0.4),
+      0 0 12px rgba(255, 105, 180, 0.2), 1px 1px 0px #2d1b4e;
+  }
+
+  .projects h2::after {
+    content: "✦ ✦ ✦ ✦ ✦";
+    bottom: -12px;
+    letter-spacing: 3px;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    margin-top: 2rem;
+  }
+
+  .project-card {
+    padding: 1.25rem;
+    box-shadow: 0 0 0 1.5px #ff69b4, 0 0 10px rgba(255, 105, 180, 0.1),
+      inset 0 0 20px rgba(255, 105, 180, 0.03);
+  }
+
+  .project-card::before {
+    height: 3px;
+  }
+
+  .project-card::after {
+    top: 10px;
+    right: 12px;
+    font-size: 0.6rem;
+    opacity: 0.4;
+  }
+
+  .project-card h3 {
+    margin-bottom: 0.75rem;
+    line-height: 1.5;
+  }
+
+  .project-card p {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+  }
+
+  .project-year {
+    padding: 0.25rem 0.5rem;
+    margin-bottom: 0.75rem;
+    letter-spacing: 1px;
+  }
+
+  .tech-stack {
+    gap: 0.35rem;
+    margin-bottom: 1rem;
+  }
+
+  .tech-tag {
+    padding: 0.2rem 0.5rem;
+    letter-spacing: 0.5px;
+  }
+
+  .project-links {
+    gap: 0.6rem;
+    padding-top: 0.85rem;
+  }
+
+  .link {
+    padding: 0.5rem 0.85rem;
+    gap: 0.4rem;
+  }
+
+  .pixel-decoration {
+    margin-top: 2rem;
+    letter-spacing: 4px;
+  }
+}
+
+/* ===== RESPONSIVE: Extra Small (max-width: 360px) ===== */
+@media (max-width: 360px) {
+  .projects {
+    padding: 2.5rem 0;
+  }
+
+  .projects .container {
+    width: 96%;
+    padding: 0 0.35rem;
+  }
+
+  .projects h2 {
+    margin-bottom: 1.75rem;
+    padding-bottom: 1rem;
+  }
+
+  .projects h2::after {
+    content: "✦ ✦ ✦";
+    letter-spacing: 2px;
+    bottom: -10px;
+  }
+
+  .projects-grid {
+    gap: 1rem;
+    margin-top: 1.75rem;
+  }
+
+  .project-card {
+    padding: 1rem;
+  }
+
+  .project-card h3 {
+    font-size: 0.8rem;
+    line-height: 1.45;
+  }
+
+  .project-card p {
+    font-size: 0.82rem;
+    line-height: 1.65;
+    margin-bottom: 1rem;
+  }
+
+  .project-year {
+    font-size: 0.5rem;
+    padding: 0.2rem 0.4rem;
+  }
+
+  .tech-tag {
+    font-size: 0.5rem;
+    padding: 0.18rem 0.4rem;
+  }
+
+  .link {
+    font-size: 0.5rem;
+    padding: 0.45rem 0.7rem;
+  }
+
+  .pixel-decoration {
+    margin-top: 1.75rem;
+    font-size: 0.45rem;
+    letter-spacing: 3px;
+  }
+}
+
+/* ===== RESPONSIVE: Large Screens (min-width: 1200px) ===== */
+@media (min-width: 1200px) {
+  .projects .container {
+    max-width: 1100px;
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.25rem;
+  }
+
+  .project-card {
+    padding: 2.25rem;
+  }
+}
+
+/* ===== RESPONSIVE: Extra Large Screens (min-width: 1400px) ===== */
+@media (min-width: 1400px) {
+  .projects .container {
+    max-width: 1200px;
+  }
+
+  .projects h2 {
+    margin-bottom: 3.5rem;
+  }
+
+  .projects-grid {
+    gap: 2.5rem;
+  }
+
+  .project-card {
+    padding: 2.5rem;
+  }
+
+  .project-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .project-card p {
+    font-size: 1rem;
+  }
+}
+
+/* ===== Accessibility: Reduced Motion ===== */
+@media (prefers-reduced-motion: reduce) {
+  .project-card,
+  .tech-tag,
+  .link,
+  .project-card::after {
+    transition: none;
+  }
+
+  .project-card:hover {
+    transform: none;
+  }
+
+  .link:hover {
+    transform: none;
+  }
+
+  .tech-tag:hover {
+    transform: none;
+  }
+}
+
+/* ===== Focus States for Accessibility ===== */
+.link:focus-visible {
+  outline: 2px solid #ff69b4;
+  outline-offset: 2px;
+  background: #ff69b4;
+  color: #1a0a2e;
+}
+
+.tech-tag:focus-visible {
+  outline: 2px solid #ff69b4;
+  outline-offset: 2px;
+}
+
+.project-card:focus-within {
+  box-shadow: 0 0 0 2px #ff69b4, 0 0 25px rgba(255, 105, 180, 0.25),
+    inset 0 0 30px rgba(255, 105, 180, 0.06);
+}
+
+/* ===== Active/Tap States for Mobile ===== */
+@media (hover: none) and (pointer: coarse) {
+  .link:active {
+    background: #ff69b4;
+    color: #1a0a2e;
+    transform: scale(0.98);
+  }
+
+  .tech-tag:active {
+    background: rgba(255, 105, 180, 0.25);
+    border-color: #ff69b4;
+  }
+
+  .project-card:active {
+    box-shadow: 0 0 0 2px #ff69b4, 0 0 20px rgba(255, 105, 180, 0.2),
+      inset 0 0 25px rgba(255, 105, 180, 0.06);
+  }
+}
