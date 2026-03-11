@@ -7,7 +7,7 @@
     var(--light-pink) 100%
   );
   padding: 5rem 0 3rem;
-  margin-top: -70px;
+  margin-top: -30px;
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -209,16 +209,20 @@
   border-radius: 50%;
   object-fit: cover;
   border: 5px solid white;
-  box-shadow: 0 8px 30px rgba(255, 193, 227, 0.35),
+  box-shadow:
+    0 8px 30px rgba(255, 193, 227, 0.35),
     0 0 0 2px var(--primary-pink);
   position: relative;
   z-index: 2;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
 }
 
 .profile-photo:hover {
   transform: scale(1.04);
-  box-shadow: 0 12px 40px rgba(255, 193, 227, 0.5),
+  box-shadow:
+    0 12px 40px rgba(255, 193, 227, 0.5),
     0 0 0 3px var(--accent-pink);
 }
 
@@ -1090,7 +1094,9 @@
 }
 
 .btn-primary:focus-visible {
-  box-shadow: 0 0 0 3px white, 0 0 0 6px var(--accent-pink);
+  box-shadow:
+    0 0 0 3px white,
+    0 0 0 6px var(--accent-pink);
 }
 
 .btn-secondary:focus-visible {
