@@ -324,6 +324,54 @@
   box-shadow: 0 4px 12px rgba(255, 153, 204, 0.35);
 }
 
+/* Demo logins button: styled like project links but acts as a toggle */
+.demo-button {
+  cursor: pointer;
+}
+
+/* Demo panel overlay (absolute within card) */
+.demo-panel {
+  position: absolute;
+  left: 1.25rem;
+  right: 1.25rem;
+  bottom: 4.6rem;
+  background: white;
+  border-radius: 0.75rem;
+  border: 1.5px solid var(--border-color);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  padding: 0.75rem 1rem;
+  transform-origin: bottom center;
+  transform: translateY(10px) scale(0.98);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.22s ease;
+  z-index: 5;
+}
+
+.demo-panel--open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.demo-panel__title {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+}
+
+.demo-panel__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.demo-panel__item {
+  font-size: 0.9rem;
+  color: var(--text-medium);
+  margin: 0.2rem 0;
+}
+
 /* ===== RESPONSIVE: Tablet (max-width: 768px) ===== */
 @media (max-width: 768px) {
   .web-projects {

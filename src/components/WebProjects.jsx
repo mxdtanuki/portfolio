@@ -1,7 +1,9 @@
 import { FiExternalLink } from "react-icons/fi";
+import { useState } from "react";
 import "./WebProjects.css";
 
 export default function WebProjects() {
+  const [openDemoId, setOpenDemoId] = useState(null);
   const projects = [
     {
       id: 1,
@@ -39,7 +41,32 @@ export default function WebProjects() {
       live: "https://mxdtanuki.github.io/2025-calendar/",
       linkLabel: "View Live",
     },
+    {
+      id: 4,
+      title: "✦ IMPRIMO",
+      year: "2026",
+      role: "Full-Stack Developer / UI-UX Designer",
+      description:
+        "A print-to-door network platform that connects customers and print shops in one system. Designed the full UI/UX system and developed the multi-role web app with dashboards for Customers, Shops, Admin, and Super Admin. Includes order management, payments & receipts, shop operations, and real-time workflow tracking.",
+      technologies: ["React JS", "CSS", "JavaScript", "UI/UX", "Figma", "Vercel"],
+      live: "https://imprimo-ptdn.vercel.app/",
+      linkLabel: "View Live",
+      demoLabel: "Demo Logins",
+      demoLogins: [
+        { role: "Super Admin", creds: "super@imprimo.app / 123456" },
+        { role: "Admin", creds: "admin@imprimo.app / 123456" },
+        { role: "Customer", creds: "customer@imprimo.app / 123456" },
+        { role: "Shop", creds: "shop@imprimo.app / 123456" },
+      ],
+    },
   ];
+
+  const sortedProjects = projects.slice().sort((a, b) => {
+    const ay = Number(a.year) || 0;
+    const by = Number(b.year) || 0;
+    if (by !== ay) return by - ay;
+    return a.id - b.id;
+  });
 
   return (
     <section id="web-projects" className="web-projects">
@@ -54,7 +81,7 @@ export default function WebProjects() {
         </p>
 
         <div className="projects-grid">
-          {projects.map((project, index) => (
+          {sortedProjects.map((project, index) => (
             <div
               key={project.id}
               className="project-card"
@@ -109,7 +136,36 @@ export default function WebProjects() {
                       <span>{project.prototypeLabel}</span>
                     </a>
                   )}
+                  {project.demoLogins && (
+                    <button
+                      type="button"
+                      className="project-link demo-button"
+                      onClick={() =>
+                        setOpenDemoId(openDemoId === project.id ? null : project.id)
+                      }
+                    >
+                      <span>{project.demoLabel}</span>
+                    </button>
+                  )}
                 </div>
+                {project.demoLogins && (
+                  <div
+                    className={`demo-panel ${openDemoId === project.id ?
+                      "demo-panel--open" : ""}`}
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <div className="demo-panel__inner">
+                      <h4 className="demo-panel__title">Demo Logins</h4>
+                      <ul className="demo-panel__list">
+                        {project.demoLogins.map((d, i) => (
+                          <li key={i} className="demo-panel__item">
+                            <strong>{d.role}:</strong> {d.creds}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           ))}
