@@ -48,15 +48,22 @@ export default function WebProjects() {
       role: "Full-Stack Developer / UI-UX Designer",
       description:
         "A print-to-door network platform that connects customers and print shops in one system. Designed the full UI/UX system and developed the multi-role web app with dashboards for Customers, Shops, Admin, and Super Admin. Includes order management, payments & receipts, shop operations, and real-time workflow tracking.",
-      technologies: ["React JS", "CSS", "JavaScript", "UI/UX", "Figma", "Vercel"],
+      technologies: [
+        "React JS",
+        "CSS",
+        "JavaScript",
+        "UI/UX",
+        "Figma",
+        "Vercel",
+      ],
       live: "https://imprimo-ptdn.vercel.app/",
       linkLabel: "View Live",
       demoLabel: "Demo Logins",
       demoLogins: [
-        { role: "Super Admin", creds: "super@imprimo.app / 123456" },
-        { role: "Admin", creds: "admin@imprimo.app / 123456" },
-        { role: "Customer", creds: "customer@imprimo.app / 123456" },
-        { role: "Shop", creds: "shop@imprimo.app / 123456" },
+        { role: "Super Admin", creds: "super@imprimo.app / 123456789" },
+        { role: "Admin", creds: "admin@imprimo.app / 123456789" },
+        { role: "Customer", creds: "customer@imprimo.app / 123456789" },
+        { role: "Shop", creds: "shop@imprimo.app / 123456789" },
       ],
     },
   ];
@@ -141,7 +148,9 @@ export default function WebProjects() {
                       type="button"
                       className="project-link demo-button"
                       onClick={() =>
-                        setOpenDemoId(openDemoId === project.id ? null : project.id)
+                        setOpenDemoId(
+                          openDemoId === project.id ? null : project.id,
+                        )
                       }
                     >
                       <span>{project.demoLabel}</span>
@@ -150,8 +159,9 @@ export default function WebProjects() {
                 </div>
                 {project.demoLogins && (
                   <div
-                    className={`demo-panel ${openDemoId === project.id ?
-                      "demo-panel--open" : ""}`}
+                    className={`demo-panel ${
+                      openDemoId === project.id ? "demo-panel--open" : ""
+                    }`}
                     onClick={(e) => e.stopPropagation()}
                   >
                     <div className="demo-panel__inner">
