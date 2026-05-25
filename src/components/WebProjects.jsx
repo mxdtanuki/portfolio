@@ -5,13 +5,13 @@ import { useState } from "react";
 import "./WebProjects.css";
 
 const techIcons = {
-  HTML: FaHtml5,
-  CSS: FaCss3Alt,
-  JavaScript: SiJavascript,
-  "React JS": FaReact,
-  Figma: FiFigma,
-  Vercel: SiVercel,
-  "UI/UX": FiLayout,
+  HTML: <FaHtml5 />,
+  CSS: <FaCss3Alt />,
+  JavaScript: <SiJavascript />,
+  "React JS": <FaReact />,
+  Figma: <FiFigma />,
+  Vercel: <SiVercel />,
+  "UI/UX": <FiLayout />,
 };
 
 export default function WebProjects() {
@@ -21,10 +21,10 @@ export default function WebProjects() {
       id: 1,
       title: "✦ Globalinked",
       year: "2025",
-      role: "Frontend Developer / UI-UX Designer",
+      role: "Frontend Developer",
       description:
-        "A monitoring system developed for the PUP Office of International Affairs. Implemented the frontend of the public web portal for a personal demo deployment used for portfolio presentation. Focused on translating designs into responsive React components and maintaining a consistent user experience across views.",
-      technologies: ["React JS", "CSS", "JavaScript", "Figma", "UI/UX"],
+        "Monitoring system developed for the PUP Office of International Affairs. Built and deployed the live web version, with the original admin-side UI/UX prototype first designed in Figma.",
+      technologies: ["HTML", "CSS", "JavaScript", "Figma", "UI/UX"],
       live: "https://mxdtanuki.github.io/globalinked-html/",
       linkLabel: "View Live",
       prototype:
@@ -48,7 +48,7 @@ export default function WebProjects() {
       year: "2024",
       role: "Developer",
       description:
-        "An interactive calendar web application featuring a fully dynamic calendar view that supports all years, not limited to a single year. Built with a clean UI and smooth navigation for browsing dates across different years.",
+        "An interactive calendar web application featuring a fully dynamic calendar view. Built with a clean UI and smooth navigation for browsing dates across different years.",
       technologies: ["HTML", "CSS", "JavaScript"],
       live: "https://mxdtanuki.github.io/2025-calendar/",
       linkLabel: "View Live",
@@ -125,19 +125,16 @@ export default function WebProjects() {
                 <p className="project-description">{project.description}</p>
 
                 <div className="project-tech">
-                  {project.technologies.map((tech, idx) => {
-                    const IconComponent = techIcons[tech];
-                    return (
-                      <span key={idx} className="tech-badge">
-                        {IconComponent && (
-                          <span className="tech-badge__icon">
-                            <IconComponent />
-                          </span>
-                        )}
-                        {tech}
-                      </span>
-                    );
-                  })}
+                  {project.technologies.map((tech, idx) => (
+                    <span key={idx} className="tech-badge">
+                      {techIcons[tech] && (
+                        <span className="tech-badge__icon">
+                          {techIcons[tech]}
+                        </span>
+                      )}
+                      {tech}
+                    </span>
+                  ))}
                 </div>
 
                 <div className="project-links">
