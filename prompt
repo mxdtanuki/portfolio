@@ -1,0 +1,417 @@
+You are improving an existing retro pink portfolio website.
+
+IMPORTANT:
+
+* Preserve the current visual identity completely.
+* Do NOT redesign the desktop version.
+* Keep the retro pink aesthetic, decorative dots, sparkles, hearts, outlines, soft shadows, and overall cute Y2K-inspired personality.
+* Keep the existing color palette.
+* Keep typography style and overall spacing feel.
+* Focus ONLY on improving responsiveness, usability, consistency, and polish across mobile/tablet sizes.
+* Desktop layout should remain visually almost identical.
+* The goal is to make the site feel intentionally designed for mobile, not simply “shrunk down.”
+
+MOST IMPORTANT:
+
+* DO NOT make the mobile layout look like a different website.
+* Preserve the asymmetrical artistic feel where possible.
+* Preserve the current visual personality and handcrafted feel.
+* Improve responsiveness WITHOUT removing the site’s charm.
+
+---
+
+## CRITICAL MOBILE LAYOUT REQUIREMENTS
+
+1. Prevent cards/tiles from touching screen edges on mobile
+
+* On mobile, slightly decrease the width/scale of cards, tiles, containers, and content blocks so they do NOT touch the left/right edges of the screen.
+* Maintain comfortable side breathing room/padding.
+* Keep the same desktop proportions and visual style.
+* The layout should feel airy and intentional instead of cramped.
+* Preserve rounded corners and outlined borders.
+
+2. Absolutely NO second scrollbar
+
+* The site must only have ONE main vertical scrollbar.
+* Remove any accidental horizontal scrolling.
+* Prevent nested scroll containers unless absolutely necessary.
+* No section should independently scroll horizontally.
+* Decorative absolute-positioned elements must not create overflow.
+* Prevent overflowing carousels, oversized cards, images, or transforms from causing side scrolling.
+* Audit the entire website for overflow-x issues.
+* Use overflow-hidden ONLY where necessary, not as a lazy fix.
+
+3. Improve mobile containment
+
+* Every section should stay properly centered within the viewport.
+* Ensure all content respects mobile safe margins.
+* Prevent images, buttons, pills, or floating decorations from exceeding viewport width.
+* Avoid edge-to-edge layouts unless intentionally designed.
+
+---
+
+## GLOBAL RESPONSIVE IMPROVEMENTS
+
+1. Create proper responsive breakpoints
+
+* Mobile: 320px–767px
+* Tablet: 768px–1023px
+* Desktop: 1024px+
+* Use fluid spacing and scaling instead of fixed pixel-heavy layouts.
+
+2. Improve vertical rhythm on mobile
+
+* Increase spacing consistency between sections.
+* Reduce overly large empty gaps.
+* Add balanced padding for smaller screens.
+* Maintain airy aesthetic without making scrolling feel too long.
+
+3. Improve touch friendliness
+
+* Buttons should have minimum touch height.
+* Increase spacing between clickable elements.
+* Ensure pills/tags do not become cramped.
+
+4. Use fluid typography
+
+* Replace harsh font jumps with clamp().
+* Headings should scale smoothly.
+* Preserve the dramatic title style while preventing overflow.
+
+5. Preserve decorative aesthetic responsibly
+
+* Keep stars, sparkles, hearts, dots, and retro elements.
+* Reposition or reduce density on smaller screens.
+* Decorative elements should never overlap important text.
+* Avoid decorative clutter on mobile.
+
+---
+
+## NAVBAR IMPROVEMENTS
+
+1. Convert navbar into responsive mobile navigation
+
+* Desktop navbar stays mostly unchanged.
+* Mobile should use a cute hamburger menu.
+* Add smooth open/close animation.
+* Menu should slide/fade elegantly.
+* Keep aesthetic consistent with the retro pink theme.
+
+2. Improve navbar spacing
+
+* Ensure logo and nav links align properly.
+* Prevent nav items from feeling too compressed.
+
+3. Sticky navbar optimization
+
+* If navbar is sticky, reduce height slightly on scroll.
+* Add subtle blur or translucent effect while preserving current aesthetic.
+
+---
+
+## HERO SECTION IMPROVEMENTS
+
+1. Improve mobile hero layout
+
+* Stack image and text vertically.
+* Prioritize readability first.
+* Ensure image remains prominent without dominating the screen.
+
+2. Optimize profile image area
+
+* Prevent circular image from becoming too large.
+* Preserve decorative orbit/ring/details.
+* Make floating badge/button scale proportionally.
+
+3. Improve heading responsiveness
+
+* Large name heading should never wrap awkwardly.
+* Use balanced line breaks.
+* Ensure subtitle remains readable.
+
+4. Improve CTA buttons
+
+* Stack buttons vertically on smaller devices if needed.
+* Maintain rounded cute appearance.
+* Ensure equal widths/alignment.
+
+5. Improve skill pills/tags
+
+* Allow proper wrapping.
+* Maintain spacing consistency.
+* Avoid awkward single-pill rows.
+
+---
+
+## ABOUT SECTION IMPROVEMENTS
+
+1. Improve content width
+
+* Text should never feel too stretched or too cramped.
+* Optimize reading width on tablets.
+
+2. Improve card responsiveness
+
+* Keep rounded borders and cute outlines.
+* Reduce excessive padding on very small screens.
+* Preserve elegant spacing.
+
+3. Improve badge layout
+
+* Tags like “creative thinker” should wrap gracefully.
+* Avoid uneven alignment.
+
+---
+
+## LEADERSHIP / EXPERIENCE SECTION IMPROVEMENTS
+
+1. Improve card stacking
+
+* Ensure organization cards scale properly.
+* Slightly reduce card width on mobile to preserve side margins.
+* Prevent cards from visually pressing against screen edges.
+* Prevent text compression.
+* Maintain clean hierarchy.
+
+2. Improve typography hierarchy
+
+* Organization titles should remain bold and readable.
+* Secondary text should not become tiny.
+
+3. Improve spacing between entries
+
+* Add breathing room between organizations.
+* Preserve clean card aesthetic.
+
+---
+
+## SKILLS & TOOLS SECTION IMPROVEMENTS
+
+1. Improve responsive grid behavior
+
+* Desktop: preserve multi-column layout.
+* Tablet: reduce to 2 columns if needed.
+* Mobile: single-column stack.
+
+2. Prevent pill/button crowding
+
+* Skill pills should wrap cleanly.
+* Maintain visual consistency.
+* Preserve cute rounded styling.
+
+3. Equalize card heights
+
+* Make skill cards visually balanced.
+* Prevent uneven layouts.
+
+---
+
+## PROJECTS SECTION IMPROVEMENTS
+
+1. Improve project card responsiveness
+
+* Cards should scale elegantly.
+* Slightly reduce tile/card width on mobile.
+* Add comfortable side margins.
+* Prevent awkward image cropping.
+* Maintain retro portfolio feel.
+
+2. Improve project preview sizing
+
+* Use consistent aspect ratios.
+* Ensure screenshots remain readable.
+
+3. Improve hover interactions for mobile
+
+* Replace hover-only interactions with tap-friendly alternatives.
+* Maintain animations where appropriate.
+
+4. Improve project metadata layout
+
+* Year, title, description, and buttons should stack cleanly.
+* Avoid cramped spacing.
+
+---
+
+## GRAPHIC DESIGN SECTION IMPROVEMENTS
+
+1. Improve image gallery responsiveness
+
+* Maintain aesthetic collage feel.
+* Prevent images from becoming tiny.
+* Ensure proper spacing.
+
+2. Add responsive masonry/grid behavior
+
+* Desktop can stay artistic.
+* Mobile should feel intentional and organized.
+
+3. Improve modal/lightbox experience
+
+* Make previews mobile friendly.
+* Add swipe-friendly behavior if possible.
+
+---
+
+## CONTACT SECTION IMPROVEMENTS
+
+1. Improve form responsiveness
+
+* Inputs should span proper width.
+* Add comfortable padding.
+* Prevent tiny text areas.
+
+2. Improve social icon spacing
+
+* Increase touch area.
+* Keep playful aesthetic.
+
+3. Improve footer layout
+
+* Stack elements properly on mobile.
+* Preserve centered elegant feel.
+
+---
+
+## ANIMATIONS & MICROINTERACTIONS
+
+1. Optimize animations for mobile
+
+* Reduce heavy motion.
+* Keep smooth soft animations.
+* Avoid laggy floating effects.
+
+2. Improve entrance animations
+
+* Add subtle fade/slide reveals.
+* Maintain soft feminine aesthetic.
+
+3. Improve hover states
+
+* Ensure every hover interaction has a mobile equivalent.
+
+---
+
+## PERFORMANCE OPTIMIZATION
+
+1. Optimize large assets
+
+* Compress images.
+* Use lazy loading where appropriate.
+
+2. Reduce layout shifts
+
+* Reserve image dimensions.
+* Stabilize section loading.
+
+3. Improve responsiveness performance
+
+* Avoid excessive blur/filter effects on mobile.
+* Reduce expensive animations.
+
+---
+
+## ACCESSIBILITY IMPROVEMENTS
+
+1. Improve text contrast carefully
+
+* Maintain pastel aesthetic.
+* Ensure readability.
+
+2. Improve keyboard navigation
+
+* Focus states should match aesthetic.
+
+3. Improve semantic structure
+
+* Proper heading hierarchy.
+* Better accessibility labels.
+
+---
+
+## VISUAL POLISH REQUESTS
+
+1. Keep the intentional retro design language
+
+* Do NOT modernize into a generic minimal portfolio.
+* Preserve personality.
+* Preserve decorative charm.
+
+2. Make mobile feel handcrafted
+
+* The mobile version should feel intentionally art-directed.
+* Avoid generic centered-only layouts.
+* Preserve asymmetry subtly where possible.
+
+3. Improve consistency
+
+* Standardize border radius usage.
+* Standardize shadows.
+* Standardize card spacing.
+* Standardize section spacing.
+
+4. Preserve the cute soft aesthetic
+
+* Keep rounded elements.
+* Keep subtle gradients.
+* Keep outlined pills.
+* Keep sparkles/hearts/dots.
+
+---
+
+## TECHNICAL IMPLEMENTATION NOTES
+
+* Use responsive flex/grid layouts.
+* Prefer clamp(), minmax(), auto-fit, and fluid sizing.
+* Avoid hardcoded widths/heights.
+* Use aspect-ratio for media.
+* Ensure images scale properly.
+* Improve responsive utility classes.
+* Ensure sections remain centered properly across all breakpoints.
+* Ensure cards/tiles shrink proportionally on mobile instead of stretching edge-to-edge.
+* Maintain internal section padding on mobile.
+* Prevent ANY horizontal overflow across the entire site.
+* Ensure transforms/animations never create overflow.
+
+Test responsiveness thoroughly on:
+
+* iPhone SE
+* iPhone 14/15
+* Samsung Galaxy sizes
+* iPad/tablets
+* Standard laptops
+* Ultrawide monitors
+
+---
+
+## MOST IMPORTANT PRIORITY
+
+DO NOT lose the original personality of the website.
+
+The current site already has a strong identity and aesthetic.
+The task is NOT to redesign it.
+
+The task is to:
+
+* refine,
+* stabilize,
+* polish,
+* improve responsiveness,
+* improve spacing,
+* improve usability,
+  while preserving the exact artistic direction and retro pink visual charm.
+
+The mobile version should feel like the same website — just cleaner, more intentional, more polished, and more responsive.
+
+
+ADDITIONAL HERO SECTION REQUIREMENT:
+
+On mobile view, place the profile picture/image ABOVE the hero text content.
+The image should appear first vertically, followed by the name, subtitle, buttons, and tags.
+Maintain the same aesthetic composition and decorative elements.
+Keep the image centered and visually prominent without becoming oversized.
+Preserve the current desktop hero layout exactly as it is.
+Only apply this stacked layout behavior on tablet/mobile breakpoints.
+Ensure spacing between the image and text feels intentional and balanced.
+Prevent the image or decorative elements from touching screen edges.
+Keep the floating decorations/orbit elements responsive and properly contained within the viewport.
