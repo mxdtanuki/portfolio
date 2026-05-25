@@ -23,7 +23,7 @@ export default function WebProjects() {
       year: "2025",
       role: "Frontend Developer",
       description:
-        "Monitoring system developed for the PUP Office of International Affairs. Built and deployed the live web version, with the original admin-side UI/UX prototype first designed in Figma.",
+        "change A monitoring system developed for the PUP Office of International Affairs. Implemented the frontend of the public web portal for a personal demo deployment used for portfolio presentation. Focused on translating designs into responsive React components and maintaining a consistent user experience across views.",
       technologies: ["HTML", "CSS", "JavaScript", "Figma", "UI/UX"],
       live: "https://mxdtanuki.github.io/globalinked-html/",
       linkLabel: "View Live",
