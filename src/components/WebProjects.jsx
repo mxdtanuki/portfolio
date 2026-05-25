@@ -37,7 +37,7 @@ export default function WebProjects() {
       year: "2024",
       role: "Developer",
       description:
-        "A web project inspired by the world of Chef Remy, Chef Colette, and Chef Gusteau: front-end design with interactive elements.",
+        "A restaurant landing page inspired by French cuisine and Pixar’s Ratatouille. Built as a frontend-only project with a single-page layout featuring menu browsing, ordering interface mockups, and contact sections. Focused on creating an elegant, animated UI that reflects a premium restaurant experience while translating a themed concept into a responsive web design.",
       technologies: ["HTML", "CSS", "JavaScript"],
       live: "https://mxdtanuki.github.io/la-ratatouille",
       linkLabel: "View Live",
