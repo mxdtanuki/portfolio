@@ -14,7 +14,8 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: repeating-linear-gradient(
+  background:
+    repeating-linear-gradient(
       0deg,
       transparent,
       transparent 2px,
@@ -52,8 +53,10 @@
   display: inline-block;
   width: 100%;
   font-family: "Press Start 2P", monospace;
-  text-shadow: 0 0 10px rgba(255, 105, 180, 0.6),
-    0 0 20px rgba(255, 105, 180, 0.3), 3px 3px 0px #2d1b4e;
+  text-shadow:
+    0 0 10px rgba(255, 105, 180, 0.6),
+    0 0 20px rgba(255, 105, 180, 0.3),
+    3px 3px 0px #2d1b4e;
   image-rendering: pixelated;
   letter-spacing: 2px;
   padding-bottom: 1.5rem;
@@ -85,9 +88,9 @@
 /* ===== Projects Grid ===== */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  margin-top: 2rem;
   position: relative;
   z-index: 1;
   width: 100%;
@@ -98,7 +101,9 @@
   background: linear-gradient(145deg, #2d1b4e, #1a0a2e);
   border-radius: 4px;
   padding: 2rem;
-  box-shadow: 0 0 0 2px #ff69b4, 0 0 15px rgba(255, 105, 180, 0.15),
+  box-shadow:
+    0 0 0 2px #ff69b4,
+    0 0 15px rgba(255, 105, 180, 0.15),
     inset 0 0 30px rgba(255, 105, 180, 0.05);
   transition: all 0.3s ease;
   border-left: none;
@@ -149,7 +154,9 @@
 
 .project-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 0 0 2px #ff69b4, 0 0 30px rgba(255, 105, 180, 0.3),
+  box-shadow:
+    0 0 0 2px #ff69b4,
+    0 0 30px rgba(255, 105, 180, 0.3),
     0 8px 32px rgba(255, 105, 180, 0.2),
     inset 0 0 30px rgba(255, 105, 180, 0.08);
 }
@@ -191,6 +198,16 @@
   margin-bottom: 1rem;
   letter-spacing: 2px;
   white-space: nowrap;
+}
+
+/* ===== Project Role ===== */
+.project-role {
+  font-size: clamp(0.7rem, 1.8vw, 0.8rem);
+  color: #da70d6;
+  font-style: italic;
+  margin-top: -0.5rem;
+  margin-bottom: 0.75rem;
+  opacity: 0.85;
 }
 
 /* ===== Tech Stack Tags ===== */
@@ -258,7 +275,8 @@
 .link:hover {
   background: #ff69b4;
   color: #1a0a2e;
-  box-shadow: 0 0 15px rgba(255, 105, 180, 0.4),
+  box-shadow:
+    0 0 15px rgba(255, 105, 180, 0.4),
     0 0 30px rgba(255, 105, 180, 0.2);
   border-color: #ff69b4;
   text-shadow: none;
@@ -293,8 +311,10 @@
   .projects h2 {
     margin-bottom: 2.5rem;
     letter-spacing: 1px;
-    text-shadow: 0 0 8px rgba(255, 105, 180, 0.5),
-      0 0 15px rgba(255, 105, 180, 0.25), 2px 2px 0px #2d1b4e;
+    text-shadow:
+      0 0 8px rgba(255, 105, 180, 0.5),
+      0 0 15px rgba(255, 105, 180, 0.25),
+      2px 2px 0px #2d1b4e;
   }
 
   .projects h2::after {
@@ -369,8 +389,10 @@
     margin-bottom: 2rem;
     padding-bottom: 1.25rem;
     letter-spacing: 0.5px;
-    text-shadow: 0 0 6px rgba(255, 105, 180, 0.4),
-      0 0 12px rgba(255, 105, 180, 0.2), 1px 1px 0px #2d1b4e;
+    text-shadow:
+      0 0 6px rgba(255, 105, 180, 0.4),
+      0 0 12px rgba(255, 105, 180, 0.2),
+      1px 1px 0px #2d1b4e;
   }
 
   .projects h2::after {
@@ -387,7 +409,9 @@
 
   .project-card {
     padding: 1.25rem;
-    box-shadow: 0 0 0 1.5px #ff69b4, 0 0 10px rgba(255, 105, 180, 0.1),
+    box-shadow:
+      0 0 0 1.5px #ff69b4,
+      0 0 10px rgba(255, 105, 180, 0.1),
       inset 0 0 20px rgba(255, 105, 180, 0.03);
   }
 
@@ -509,6 +533,22 @@
   }
 }
 
+/* ===== RESPONSIVE: Tablet+ (min-width: 640px) ===== */
+@media (min-width: 640px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+}
+
+/* ===== RESPONSIVE: Desktop (min-width: 1024px) ===== */
+@media (min-width: 1024px) {
+  .projects-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 /* ===== RESPONSIVE: Large Screens (min-width: 1200px) ===== */
 @media (min-width: 1200px) {
   .projects .container {
@@ -588,7 +628,9 @@
 }
 
 .project-card:focus-within {
-  box-shadow: 0 0 0 2px #ff69b4, 0 0 25px rgba(255, 105, 180, 0.25),
+  box-shadow:
+    0 0 0 2px #ff69b4,
+    0 0 25px rgba(255, 105, 180, 0.25),
     inset 0 0 30px rgba(255, 105, 180, 0.06);
 }
 
@@ -606,7 +648,9 @@
   }
 
   .project-card:active {
-    box-shadow: 0 0 0 2px #ff69b4, 0 0 20px rgba(255, 105, 180, 0.2),
+    box-shadow:
+      0 0 0 2px #ff69b4,
+      0 0 20px rgba(255, 105, 180, 0.2),
       inset 0 0 25px rgba(255, 105, 180, 0.06);
   }
 }

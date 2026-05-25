@@ -6,9 +6,10 @@ export default function Projects() {
     {
       id: 1,
       title: "Globalinked",
+      role: "Frontend Developer / UI-UX Designer",
       description:
-        "A public-facing platform designed and prototyped in Figma — connecting global communities through a clean, intuitive interface.",
-      tech: ["Figma", "UI/UX", "Prototyping"],
+        "A monitoring system developed for the PUP Office of International Affairs. Implemented the frontend of the public web portal for a personal demo deployment used for portfolio presentation. Focused on translating designs into responsive React components and maintaining a consistent user experience across views.",
+      tech: ["React JS", "CSS", "JavaScript", "Figma", "UI/UX"],
       year: "2025",
       links: [
         {
@@ -21,6 +22,7 @@ export default function Projects() {
     {
       id: 2,
       title: "La Ratatouille",
+      role: "Developer",
       description:
         "A charming restaurant website bringing the warmth of French cuisine to the web with delightful design and smooth interactions.",
       tech: ["HTML", "CSS", "JavaScript", "GitHub Pages"],
@@ -40,21 +42,17 @@ export default function Projects() {
     },
     {
       id: 3,
-      title: "2025 Calendar",
+      title: "Calendar App",
+      role: "Developer",
       description:
-        "A pixel-perfect interactive calendar for 2025, crafted with clean code and a focus on usability and visual appeal.",
-      tech: ["HTML", "CSS", "JavaScript", "GitHub Pages"],
+        "An interactive calendar web application featuring a fully dynamic calendar view that supports all years, not limited to a single year. Built with a clean UI and smooth navigation for browsing dates across different years.",
+      tech: ["HTML", "CSS", "JavaScript"],
       year: "2024",
       links: [
         {
-          label: "Live",
+          label: "View Live",
           url: "https://mxdtanuki.github.io/2025-calendar/",
           icon: "external",
-        },
-        {
-          label: "Code",
-          url: "https://github.com/mxdtanuki/2025-calendar",
-          icon: "github",
         },
       ],
     },
@@ -81,6 +79,7 @@ export default function Projects() {
             <div key={project.id} className="project-card">
               <span className="project-year">⌗ {project.year}</span>
               <h3>{project.title}</h3>
+              {project.role && <p className="project-role">{project.role}</p>}
               <p>{project.description}</p>
               <div className="tech-stack">
                 {project.tech.map((tech, idx) => (
@@ -105,9 +104,7 @@ export default function Projects() {
             </div>
           ))}
         </div>
-        <div className="pixel-decoration">
-          ◆ ◇ ◆ ◇ ◆
-        </div>
+        <div className="pixel-decoration">◆ ◇ ◆ ◇ ◆</div>
       </div>
     </section>
   );

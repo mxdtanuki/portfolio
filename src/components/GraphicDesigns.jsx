@@ -37,7 +37,7 @@ import dn7 from "../assets/darkest night/7.png";
 import dn8 from "../assets/darkest night/8.jpg";
 import dn9 from "../assets/darkest night/11.jpg";
 import dn10 from "../assets/darkest night/10.jpg";
-import dn10b from "../assets/darkest night/tumblr_93026f63a0ad04346a7f9dcffab78643_064729a2_1280.gif";
+import dn10b from "../assets/darkest night/20230816_233444.png";
 import dn11 from "../assets/darkest night/9.jpg";
 import dn12 from "../assets/darkest night/12.jpg";
 import dn13 from "../assets/darkest night/13.jpg";
@@ -158,17 +158,17 @@ export default function GraphicDesigns() {
       colors: ["#1A1A1A", "#8B0000", "#4A4A4A", "#2C2C2C"],
       emoji: darkestNightGif,
       images: [
+        { src: dn2, credits: null },
         {
-          src: dn1,
+          src: dn10b,
           credits: [
             {
               text: "Art illustrated by ",
-              artist: "鬼舞炭",
-              link: "https://www.pixiv.net/en/tags/%E9%AC%BC%E8%88%9E%E7%82%AD",
+              artist: "ごーと",
+              link: "https://x.com/22karakara_Y",
             },
           ],
         },
-        { src: dn2, credits: null },
         {
           src: dn3,
           credits: [
@@ -186,6 +186,16 @@ export default function GraphicDesigns() {
               text: "Art illustrated by ",
               artist: "hakusetu",
               link: "https://www.pixiv.net/en/users/9224174",
+            },
+          ],
+        },
+        {
+          src: dn1,
+          credits: [
+            {
+              text: "Art illustrated by ",
+              artist: "鬼舞炭",
+              link: "https://www.pixiv.net/en/tags/%E9%AC%BC%E8%88%9E%E7%82%AD",
             },
           ],
         },
@@ -251,7 +261,6 @@ export default function GraphicDesigns() {
         },
         { src: dn9, credits: null },
         { src: dn10, credits: null },
-        { src: dn10b, credits: null },
         { src: dn11, credits: null },
         { src: dn12, credits: null },
         { src: dn13, credits: null },
@@ -271,7 +280,6 @@ export default function GraphicDesigns() {
           ],
         },
       ],
-      customLayout: "darkest",
     },
     {
       id: 3,
@@ -411,105 +419,106 @@ export default function GraphicDesigns() {
 
   return (
     <>
-    <section
-      id="graphic-designs"
-      className="graphic-designs"
-    >
-      <div className="gd-grid-overlay"></div>
+      <section id="graphic-designs" className="graphic-designs">
+        <div className="gd-grid-overlay"></div>
 
-      <div className="gd-bg-decor">
-        <span className="gd-dot gd-dot-1">✦</span>
-        <span className="gd-dot gd-dot-2">✧</span>
-        <span className="gd-dot gd-dot-3">♡</span>
-        <span className="gd-dot gd-dot-4">✦</span>
-        <span className="gd-dot gd-dot-5">✧</span>
-        <span className="gd-dot gd-dot-6">♡</span>
-      </div>
-
-      <div className="gd-blob gd-blob-1"></div>
-      <div className="gd-blob gd-blob-2"></div>
-
-      <div className="container">
-        {/* Section Header */}
-        <div className="gd-header">
-          <span className="gd-label">
-            <span className="gd-label-star">✦</span>
-            creative works
-            <span className="gd-label-star">✦</span>
-          </span>
-          <h2>
-            Graphic <span className="gd-heading-accent">Designs</span>
-          </h2>
-          <div className="gd-divider">
-            <span className="gd-divider-dot">·</span>
-            <span className="gd-divider-dot">·</span>
-            <span className="gd-divider-line" />
-            <span className="gd-divider-star">✧</span>
-            <span className="gd-divider-line" />
-            <span className="gd-divider-dot">·</span>
-            <span className="gd-divider-dot">·</span>
-          </div>
-          <p className="gd-subtitle">
-            Explore my creative design work organized by color themes
-            <span className="gd-subtitle-heart"> ♡</span>
-          </p>
+        <div className="gd-bg-decor">
+          <span className="gd-dot gd-dot-1">✦</span>
+          <span className="gd-dot gd-dot-2">✧</span>
+          <span className="gd-dot gd-dot-3">♡</span>
+          <span className="gd-dot gd-dot-4">✦</span>
+          <span className="gd-dot gd-dot-5">✧</span>
+          <span className="gd-dot gd-dot-6">♡</span>
         </div>
 
-        {/* Themes Grid */}
-        <div className="themes-grid">
-          {themes.map((theme, themeIdx) => (
-            <div
-              key={theme.id}
-              className={`theme-card ${theme.colorClass}`}
-              onClick={() => setSelectedTheme(theme.id)}
-              style={{ animationDelay: `${themeIdx * 0.15}s` }}
-            >
-              <div className="theme-card-accent" />
-              <div className="theme-card-pattern"></div>
-              <div className="theme-palette">
-                {theme.colors.map((color, idx) => (
-                  <span
-                    key={idx}
-                    className="palette-dot"
-                    style={{ background: color }}
-                  />
-                ))}
-              </div>
-              <div className="theme-card-content">
-                <div className="theme-emoji-wrapper">
-                  <img
-                    src={theme.emoji}
-                    alt={theme.name}
-                    className="theme-emoji"
-                  />
-                  <div className="theme-emoji-ring"></div>
-                </div>
-                <div className="theme-number">
-                  <span className="number-label">theme</span>
-                  <span className="number-value">0{theme.id}</span>
-                </div>
-                <h3>{theme.name}</h3>
-                <p>{theme.description}</p>
-                <button className="theme-button">
-                  <FiEye size={14} />
-                  <span>View Gallery</span>
-                  {theme.images.length > 0 && (
-                    <span className="btn-count">{theme.images.length}</span>
-                  )}
-                  <span className="btn-arrow">→</span>
-                </button>
-              </div>
-              <span className="theme-corner-star">✧</span>
-              <span className="theme-corner-star theme-corner-star-bl">✦</span>
+        <div className="gd-blob gd-blob-1"></div>
+        <div className="gd-blob gd-blob-2"></div>
+
+        <div className="container">
+          {/* Section Header */}
+          <div className="gd-header">
+            <span className="gd-label">
+              <span className="gd-label-star">✦</span>
+              creative works
+              <span className="gd-label-star">✦</span>
+            </span>
+            <h2>
+              Graphic <span className="gd-heading-accent">Designs</span>
+            </h2>
+            <div className="gd-divider">
+              <span className="gd-divider-dot">·</span>
+              <span className="gd-divider-dot">·</span>
+              <span className="gd-divider-line" />
+              <span className="gd-divider-star">✧</span>
+              <span className="gd-divider-line" />
+              <span className="gd-divider-dot">·</span>
+              <span className="gd-divider-dot">·</span>
             </div>
-          ))}
-        </div>
-      </div>
-    </section>
+            <p className="gd-subtitle">
+              Explore my creative design work organized by color themes
+              <span className="gd-subtitle-heart"> ♡</span>
+            </p>
+          </div>
 
-    {/* Modal portal */}
-    {selectedTheme && selectedThemeData && createPortal(
-      <div className="gallery-modal" onClick={() => setSelectedTheme(null)}>
+          {/* Themes Grid */}
+          <div className="themes-grid">
+            {themes.map((theme, themeIdx) => (
+              <div
+                key={theme.id}
+                className={`theme-card ${theme.colorClass}`}
+                onClick={() => setSelectedTheme(theme.id)}
+                style={{ animationDelay: `${themeIdx * 0.15}s` }}
+              >
+                <div className="theme-card-accent" />
+                <div className="theme-card-pattern"></div>
+                <div className="theme-palette">
+                  {theme.colors.map((color, idx) => (
+                    <span
+                      key={idx}
+                      className="palette-dot"
+                      style={{ background: color }}
+                    />
+                  ))}
+                </div>
+                <div className="theme-card-content">
+                  <div className="theme-emoji-wrapper">
+                    <img
+                      src={theme.emoji}
+                      alt={theme.name}
+                      className="theme-emoji"
+                    />
+                    <div className="theme-emoji-ring"></div>
+                  </div>
+                  <div className="theme-number">
+                    <span className="number-label">theme</span>
+                    <span className="number-value">0{theme.id}</span>
+                  </div>
+                  <h3>{theme.name}</h3>
+                  <p>{theme.description}</p>
+                  <button className="theme-button">
+                    <FiEye size={14} />
+                    <span>View Gallery</span>
+                    {theme.images.length > 0 && (
+                      <span className="btn-count">{theme.images.length}</span>
+                    )}
+                    <span className="btn-arrow">→</span>
+                  </button>
+                </div>
+                <span className="theme-corner-star">✧</span>
+                <span className="theme-corner-star theme-corner-star-bl">
+                  ✦
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Modal portal */}
+      {selectedTheme &&
+        selectedThemeData &&
+        createPortal(
+          <div className="gallery-modal" onClick={() => setSelectedTheme(null)}>
             <div
               className={`modal-content ${selectedThemeData.colorClass}`}
               onClick={(e) => e.stopPropagation()}
@@ -792,12 +801,14 @@ export default function GraphicDesigns() {
               </div>
             </div>
           </div>,
-      document.body
-    )}
+          document.body,
+        )}
 
-    {/* Lightbox portal */}
-    {lightboxImage !== null && selectedThemeData && createPortal(
-      <div className="lightbox" onClick={closeLightbox}>
+      {/* Lightbox portal */}
+      {lightboxImage !== null &&
+        selectedThemeData &&
+        createPortal(
+          <div className="lightbox" onClick={closeLightbox}>
             <button
               className="lightbox-nav lightbox-prev"
               onClick={(e) => {
@@ -888,8 +899,8 @@ export default function GraphicDesigns() {
               <FiX size={18} />
             </button>
           </div>,
-      document.body
-    )}
+          document.body,
+        )}
     </>
   );
 }

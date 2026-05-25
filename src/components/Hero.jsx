@@ -26,6 +26,9 @@ export default function Hero() {
                 src={profilePhoto}
                 alt="Mikylla Samantha M. Palaming"
                 className="profile-photo"
+                loading="lazy"
+                width="240"
+                height="240"
               />
               <div className="photo-badge">
                 <span>✿</span>

@@ -244,14 +244,18 @@
   border-radius: 1.5rem;
   border: 1.5px solid var(--border-color);
   overflow: hidden;
-  box-shadow: 0 8px 30px rgba(255, 193, 227, 0.15),
+  box-shadow:
+    0 8px 30px rgba(255, 193, 227, 0.15),
     inset 0 1px 0 rgba(255, 255, 255, 0.8);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
 }
 
 .bio-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 18px 45px rgba(255, 193, 227, 0.25),
+  box-shadow:
+    0 18px 45px rgba(255, 193, 227, 0.25),
     inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
@@ -569,7 +573,10 @@
   overflow: hidden;
   opacity: 0;
   transform: translateY(10px);
-  transition: max-height 0.5s ease, opacity 0.4s ease, transform 0.4s ease;
+  transition:
+    max-height 0.5s ease,
+    opacity 0.4s ease,
+    transform 0.4s ease;
 }
 
 .leadership-hover-card:hover .leadership-hover-details,
@@ -665,8 +672,8 @@
 
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
 }
 
 .skill-category {
@@ -815,6 +822,18 @@
 .skill-tag:hover .tag-bullet {
   color: white;
   opacity: 0.7;
+}
+
+.skill-tag__icon {
+  display: flex;
+  align-items: center;
+  font-size: 0.95rem;
+  color: var(--accent-pink);
+  transition: color 0.3s ease;
+}
+
+.skill-tag:hover .skill-tag__icon {
+  color: white;
 }
 
 .skill-count {
@@ -1260,6 +1279,56 @@
   .greeting-text {
     font-size: 0.7rem;
     letter-spacing: 1.5px;
+  }
+}
+
+/* ─── Responsive: Tablet+ (min-width: 640px) ─── */
+@media (min-width: 640px) {
+  .about {
+    padding: 5rem 0;
+  }
+
+  .bio-card-inner {
+    padding: 2rem 2.2rem;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  /* Restore hover-reveal for leadership on tablet+ */
+  .leadership-hover-details {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(10px);
+    transition:
+      max-height 0.5s ease,
+      opacity 0.4s ease,
+      transform 0.4s ease;
+  }
+
+  .leadership-hover-card:hover .leadership-hover-details,
+  .leadership-hover-card:focus-within .leadership-hover-details {
+    max-height: 500px;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .leadership-hint {
+    display: flex;
+  }
+}
+
+/* ─── Responsive: Desktop (min-width: 1024px) ─── */
+@media (min-width: 1024px) {
+  .about {
+    padding: 6rem 0;
+  }
+
+  .bio-card-inner {
+    padding: 2.5rem 2.8rem;
   }
 }
 

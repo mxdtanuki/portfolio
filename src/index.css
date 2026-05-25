@@ -6,7 +6,9 @@
   font-style: normal;
 }
 
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -31,6 +33,28 @@
   --text-light: #c9a3bf;
   --border-color: #ffd4e9;
 
+  /* Layout containers */
+  --container-max-mobile: 100%;
+  --container-max-tablet: 72rem;
+  --container-max-desktop: 88rem;
+
+  /* Spacing scale */
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+
+  /* Shared tokens */
+  --radius: 0.5rem;
+  --card-gap: var(--space-2);
+
+  /* Typography scale */
+  --h1-mobile: 1.75rem;
+  --h1-tablet: 2.25rem;
+  --h1-desktop: 3rem;
+  --body-size-mobile: 1rem;
+  --body-size-tablet: 1.0625rem;
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -38,7 +62,47 @@
 }
 
 html {
+  font-size: 16px;
   scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  font-size: var(--body-size-mobile);
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (min-width: 640px) {
+  body {
+    font-size: var(--body-size-tablet);
+  }
+}
+
+/* Global container — mobile-first */
+.container {
+  width: 100%;
+  max-width: var(--container-max-mobile);
+  margin: 0 auto;
+  padding-inline: var(--space-2);
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: var(--container-max-tablet);
+    padding-inline: var(--space-3);
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: var(--container-max-desktop);
+    padding-inline: var(--space-4);
+  }
 }
 
 a {
@@ -49,22 +113,27 @@ a:hover {
   color: var(--accent-pink);
 }
 
-body {
-  margin: 0;
-  min-width: 320px;
-  min-height: 100vh;
-  background-color: var(--bg-light);
-  color: var(--text-dark);
-}
-
 button {
   font-family: inherit;
   cursor: pointer;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
+/* Accessibility: keyboard focus ring */
+:focus-visible {
+  outline: 2px solid var(--accent-pink);
+  outline-offset: 3px;
+  border-radius: var(--radius);
+}
+
+/* Accessibility: reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 

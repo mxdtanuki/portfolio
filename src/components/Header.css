@@ -12,7 +12,7 @@
   box-shadow: 0 4px 20px rgba(255, 182, 213, 0.35);
 }
 
-/* Retro scallop / dotted border accents */
+/* Retro dotted border accents */
 .header-border-top {
   height: 3px;
   background: repeating-linear-gradient(
@@ -37,15 +37,13 @@
   opacity: 0.35;
 }
 
-/* ─── Container ─── */
+/* ─── Header content row ─── */
 .header-content {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 0;
+  min-height: 56px; /* mobile height */
+  position: relative;
 }
 
 /* ─── Logo ─── */
@@ -87,95 +85,81 @@
   }
 }
 
-/* ─── Navigation ─── */
+/* ─── Navigation — mobile base (full-viewport overlay) ─── */
 .nav {
-  display: flex;
+  display: none;
+  position: fixed;
+  inset: 0;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: clamp(1rem, 2vw, 1.8rem);
+  gap: 1rem;
+  padding: var(--space-3);
+  background: rgba(10, 10, 10, 0.95);
+  z-index: 150;
+  overflow-y: auto;
+}
+
+.nav.is-open {
+  display: flex;
+  animation: navOverlayIn 0.22s ease forwards;
+}
+
+@keyframes navOverlayIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .nav-dot {
-  color: var(--accent-pink);
-  font-size: 1.2rem;
-  opacity: 0.5;
-  user-select: none;
+  display: none; /* hidden in overlay; shown on tablet+ */
 }
 
 .nav a {
-  color: var(--text-dark);
+  color: white;
   text-decoration: none;
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 1.125rem;
   letter-spacing: 0.5px;
-  transition: all 0.3s ease;
-  position: relative;
-  padding: 0.4rem 0.2rem;
-}
-
-.nav a::after {
-  content: "·····";
-  position: absolute;
-  bottom: -4px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 0.6rem;
-  letter-spacing: 2px;
-  color: var(--accent-pink);
-  opacity: 0;
-  transition: all 0.3s ease;
+  transition: color 0.3s ease;
+  padding: 0.75rem 1rem;
+  min-height: 44px;
+  min-width: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius);
 }
 
 .nav a:hover {
   color: var(--accent-pink);
 }
 
-.nav a:hover::after {
-  opacity: 1;
+.nav a:focus-visible {
+  outline: 2px solid var(--accent-pink);
+  outline-offset: 3px;
 }
 
-/* ─── Header Right Actions ─── */
+/* ─── Header right area ─── */
 .header-right {
   display: flex;
   align-items: center;
   gap: 1rem;
-  z-index: 101;
+  z-index: 200; /* always above overlay */
 }
 
-.header-social-links {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-}
-
-.header-social-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.25rem;
-  height: 2.25rem;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.6);
-  color: var(--text-dark);
-  transition: all 0.3s ease;
-  border: 2px solid transparent;
-  text-decoration: none;
-}
-
-.header-social-icon:hover {
-  background: var(--bg-white);
-  color: var(--accent-pink);
-  border-color: var(--accent-pink);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(255, 182, 213, 0.4);
-}
-
-/* ─── Mobile Menu Toggle ─── */
+/* ─── Hamburger button — visible on mobile ─── */
 .menu-toggle {
-  display: none;
+  display: flex;
   background: rgba(255, 255, 255, 0.4);
   border: 2px dashed var(--accent-pink);
   color: var(--text-dark);
   cursor: pointer;
+  min-width: 48px;
+  min-height: 48px;
   width: 2.75rem;
   height: 2.75rem;
   border-radius: 0.5rem;
@@ -192,165 +176,80 @@
   border-style: solid;
 }
 
-/* ===== RESPONSIVE: Tablet (max-width: 768px) ===== */
-@media (max-width: 768px) {
+.menu-toggle:focus-visible {
+  outline: 2px solid var(--accent-pink);
+  outline-offset: 3px;
+}
+
+/* ===== TABLET+ (min-width: 640px) ===== */
+@media (min-width: 640px) {
   .header-content {
-    width: 92%;
-    padding: 0.85rem 0;
+    min-height: 72px; /* taller header on tablet+ */
   }
 
-  .menu-toggle {
-    display: flex;
-  }
-
-  .header-social-links {
-    display: none;
-  }
-
-  /* Mobile Dropdown Layout */
+  /* Nav: inline row, transparent — always visible */
   .nav {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    flex-direction: column;
-    gap: 0;
-    background: linear-gradient(180deg, var(--primary-pink) 0%, #fff0f7 100%);
-    padding: 0.5rem 2rem 1.5rem;
-    display: none;
-    box-shadow: 0 12px 25px rgba(255, 182, 213, 0.3);
-    border-bottom: 2.5px dashed var(--accent-pink);
-    transform-origin: top center;
-  }
-
-  /* React handles the class toggling; we handle the animation */
-  .nav.open {
-    display: flex;
-    animation: slideDownFade 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-  }
-
-  @keyframes slideDownFade {
-    0% {
-      opacity: 0;
-      transform: scaleY(0.95) translateY(-10px);
-    }
-    100% {
-      opacity: 1;
-      transform: scaleY(1) translateY(0);
-    }
+    display: flex !important;
+    position: static;
+    inset: auto;
+    flex-direction: row;
+    background: transparent;
+    z-index: auto;
+    padding: 0;
+    gap: clamp(0.5rem, 1.5vw, 1.8rem);
+    animation: none;
+    overflow-y: visible;
+    align-items: center;
   }
 
   .nav-dot {
-    display: none;
+    display: inline;
+    color: var(--accent-pink);
+    font-size: 1.2rem;
+    opacity: 0.5;
+    user-select: none;
   }
 
   .nav a {
-    padding: 1.1rem 0;
-    border-bottom: 1px dotted rgba(255, 153, 204, 0.6);
-    width: 100%;
-    text-align: center;
-    font-size: 1.05rem;
-  }
-
-  .nav a:last-child {
-    border-bottom: none;
-  }
-
-  /* Disable the hover dots on mobile drop down for cleaner look */
-  .nav a::after {
-    display: none;
-  }
-  
-  /* Disable hover color shift on touch devices to prevent "sticky" hover */
-  .nav a:hover {
     color: var(--text-dark);
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    padding: 0.625rem 0.875rem;
+    position: relative;
+    min-height: 44px;
+    justify-content: flex-start;
+  }
+
+  .nav a::after {
+    content: "·····";
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.6rem;
+    letter-spacing: 2px;
+    color: var(--accent-pink);
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+
+  .nav a:hover {
+    color: var(--accent-pink);
+  }
+
+  .nav a:hover::after {
+    opacity: 1;
+  }
+
+  /* Hide hamburger on tablet+ */
+  .menu-toggle {
+    display: none;
   }
 }
 
-/* ===== RESPONSIVE: Mobile (max-width: 480px) ===== */
-@media (max-width: 480px) {
-  .header-content {
-    width: 94%;
-    padding: 0.75rem 0;
-  }
-
+/* ===== DESKTOP (min-width: 1024px) ===== */
+@media (min-width: 1024px) {
   .nav {
-    padding: 0.5rem 1.25rem 1.25rem;
-  }
-
-  .nav a {
-    padding: 1rem 0;
-    font-size: 1rem;
-  }
-
-  .menu-toggle {
-    width: 2.5rem;
-    height: 2.5rem;
-    border-width: 1.5px;
-  }
-}
-
-/* ===== RESPONSIVE: Extra Small (max-width: 360px) ===== */
-@media (max-width: 360px) {
-  .header-content {
-    width: 96%;
-  }
-
-  .logo {
-    gap: 0.25rem;
-  }
-
-  .menu-toggle {
-    width: 2.25rem;
-    height: 2.25rem;
-  }
-}
-
-/* ===== Accessibility: Focus States & Reduced Motion ===== */
-.nav a:focus-visible,
-.header-social-icon:focus-visible,
-.menu-toggle:focus-visible {
-  outline: 2px solid var(--text-dark);
-  outline-offset: 3px;
-  border-radius: 4px;
-}
-
-.header-social-icon:focus-visible {
-  border-radius: 50%;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .logo-star {
-    animation: none;
-  }
-
-  .nav.open {
-    animation: none;
-  }
-
-  .nav a,
-  .nav a::after,
-  .header-social-icon,
-  .menu-toggle {
-    transition: none;
-  }
-}
-
-/* ===== Touch Target Fallbacks ===== */
-@media (hover: none) and (pointer: coarse) {
-  .nav a {
-    /* Ensures ample space for fat fingers */
-    padding: 0.75rem 0.5rem; 
-  }
-  
-  .header-social-icon:active {
-    background: var(--bg-white);
-    border-color: var(--accent-pink);
-    transform: scale(0.95);
-  }
-  
-  .menu-toggle:active {
-    background: rgba(255, 255, 255, 0.8);
-    transform: scale(0.95);
+    gap: clamp(1rem, 2vw, 1.8rem);
   }
 }

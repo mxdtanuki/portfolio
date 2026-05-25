@@ -146,9 +146,9 @@
 /* ─── Themes Grid ─── */
 .themes-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.8rem;
-  max-width: 1050px;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  max-width: 480px;
   margin: 0 auto;
 }
 
@@ -1282,6 +1282,24 @@
 
   .credit-item {
     font-size: 0.72rem;
+  }
+}
+
+/* ─── Responsive: Tablet+ (min-width: 640px) ─── */
+@media (min-width: 640px) {
+  .themes-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    max-width: 680px;
+  }
+}
+
+/* ─── Responsive: Desktop (min-width: 1024px) ─── */
+@media (min-width: 1024px) {
+  .themes-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.8rem;
+    max-width: 1050px;
   }
 }
 

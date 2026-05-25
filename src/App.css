@@ -56,12 +56,12 @@ h2 {
 }
 
 body {
-  /* Provides a default spacer at the bottom of the entire website */
-  padding-bottom: 120px;
+  /* Footer padding removed since footer is commented out */
+  /* padding-bottom: 120px; */
 }
 
 @media (max-width: 768px) {
   body {
-    padding-bottom: 180px; /* Accounts for the taller stacked mobile footer */
+    /* padding-bottom: 180px; */
   }
 }

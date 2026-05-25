@@ -17,13 +17,13 @@ export default function Contact() {
       href: "mailto:p.mikyllasamantha@gmail.com",
       isLink: true,
     },
-    {
-      icon: <FiPhone size={18} />,
-      label: "Phone",
-      value: "+639 91 994 2742",
-      href: "tel:+639919942742",
-      isLink: true,
-    },
+    // {
+    //   icon: <FiPhone size={18} />,
+    //   label: "Phone",
+    //   value: "+639 91 994 2742",
+    //   href: "tel:+639919942742",
+    //   isLink: true,
+    // },
     {
       icon: <FiMapPin size={18} />,
       label: "Location",
