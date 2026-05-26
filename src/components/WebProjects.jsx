@@ -35,7 +35,7 @@ export default function WebProjects() {
         "A web-based monitoring system developed for the PUP Office of International Affairs. Implemented the frontend of the public web portal for a personal demo deployment used for portfolio presentation. Focused on translating designs into responsive React components and maintaining a consistent user experience across the multi-page interface.",
       */
       technologies: ["HTML", "CSS", "JavaScript", "Figma", "UI/UX"],
-      live: "https://mxdtanuki.github.io/globalinked-html/",
+      live: "https://globalinked-demo.vercel.app/",
       linkLabel: "View Live",
       prototype:
         "https://www.figma.com/proto/HuHYYlYiqSXn07MQ22BZrn/globalinked-oia?t=j3qhxQHESUMbybfz-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&node-id=19-2312&starting-point-node-id=1%3A8284",
