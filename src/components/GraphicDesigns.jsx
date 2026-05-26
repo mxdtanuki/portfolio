@@ -5,8 +5,8 @@ import {
   FiX,
   FiImage,
   FiInfo,
-  FiChevronLeft,
-  FiChevronRight,
+  // FiChevronLeft,
+  // FiChevronRight,
 } from "react-icons/fi";
 import "./GraphicDesigns.css";
 
@@ -65,8 +65,26 @@ export default function GraphicDesigns() {
   const [selectedTheme, setSelectedTheme] = useState(null);
   const [lightboxImage, setLightboxImage] = useState(null);
   const [showCredits, setShowCredits] = useState(false);
+  const [viewMode, setViewMode] = useState("grid"); // "grid" or "scroll"
+  // const [visibleCount, setVisibleCount] = useState(12); // For pagination - commented out, all images load now
   const savedScrollYRef = useRef(0);
   const isScrollLockedRef = useRef(false);
+
+  /* Archive navigation functions - commented out for now
+  const goToNextArchive = () => {
+    const currentIndex = themes.findIndex((t) => t.id === selectedTheme);
+    const nextIndex = (currentIndex + 1) % themes.length;
+    setSelectedTheme(themes[nextIndex].id);
+    setVisibleCount(12); // Reset pagination
+  };
+
+  const goToPrevArchive = () => {
+    const currentIndex = themes.findIndex((t) => t.id === selectedTheme);
+    const prevIndex = (currentIndex - 1 + themes.length) % themes.length;
+    setSelectedTheme(themes[prevIndex].id);
+    setVisibleCount(12); // Reset pagination
+  };
+  */
 
   const themes = [
     {
@@ -471,6 +489,16 @@ export default function GraphicDesigns() {
               >
                 <div className="theme-card-accent" />
                 <div className="theme-card-pattern"></div>
+                <div className="theme-card-scanline"></div>
+
+                {/* Archive Header */}
+                <div className="theme-archive-header">
+                  <span className="archive-label">FILE ENTRY</span>
+                  <span className="archive-id">
+                    #{String(theme.id).padStart(3, "0")}
+                  </span>
+                </div>
+
                 <div className="theme-palette">
                   {theme.colors.map((color, idx) => (
                     <span
@@ -480,6 +508,7 @@ export default function GraphicDesigns() {
                     />
                   ))}
                 </div>
+
                 <div className="theme-card-content">
                   <div className="theme-emoji-wrapper">
                     <img
@@ -490,14 +519,25 @@ export default function GraphicDesigns() {
                     <div className="theme-emoji-ring"></div>
                   </div>
                   <div className="theme-number">
-                    <span className="number-label">theme</span>
+                    <span className="number-label">archive</span>
                     <span className="number-value">0{theme.id}</span>
                   </div>
                   <h3>{theme.name}</h3>
                   <p>{theme.description}</p>
+
+                  {/* Preview Grid */}
+                  <div className="theme-preview-grid">
+                    {theme.images.slice(0, 6).map((img, idx) => (
+                      <div key={idx} className="theme-preview-item">
+                        <img src={img.src} alt="" loading="lazy" />
+                        <div className="preview-item-overlay"></div>
+                      </div>
+                    ))}
+                  </div>
+
                   <button className="theme-button">
                     <FiEye size={14} />
-                    <span>View Gallery</span>
+                    <span>Open Archive</span>
                     {theme.images.length > 0 && (
                       <span className="btn-count">{theme.images.length}</span>
                     )}
@@ -532,6 +572,7 @@ export default function GraphicDesigns() {
               >
                 <FiX size={18} />
               </button>
+
               <div className="modal-inner">
                 <div className="modal-header">
                   <div className="modal-emoji-wrapper">
@@ -542,10 +583,36 @@ export default function GraphicDesigns() {
                     />
                   </div>
                   <div className="modal-title-group">
-                    <span className="modal-theme-label">
-                      theme 0{selectedThemeData.id}
-                    </span>
-                    <h3>{selectedThemeData.name}</h3>
+                    <div className="modal-title-row">
+                      <div className="modal-title-content">
+                        <span className="modal-theme-label">
+                          theme 0{selectedThemeData.id}
+                        </span>
+                        <h3>{selectedThemeData.name}</h3>
+                      </div>
+                      {/* Archive Navigation - Commented out for now
+                      <div className="archive-navigation">
+                        <button
+                          className="archive-nav-btn archive-nav-prev"
+                          onClick={goToPrevArchive}
+                          title="Previous Archive"
+                        >
+                          <span className="nav-btn-inner">
+                            <FiChevronLeft size={16} />
+                          </span>
+                        </button>
+                        <button
+                          className="archive-nav-btn archive-nav-next"
+                          onClick={goToNextArchive}
+                          title="Next Archive"
+                        >
+                          <span className="nav-btn-inner">
+                            <FiChevronRight size={16} />
+                          </span>
+                        </button>
+                      </div>
+                      */}
+                    </div>
                   </div>
                 </div>
                 <div className="modal-palette">
@@ -565,228 +632,298 @@ export default function GraphicDesigns() {
                 selectedThemeData.images.length > 0 ? (
                   <>
                     <div className="gallery-grid-header">
-                      <span className="gallery-count">
-                        <span className="gallery-count-number">
-                          {selectedThemeData.images.length}
-                        </span>{" "}
-                        designs
-                      </span>
-                      <span className="gallery-hint">
-                        <FiEye size={11} />
-                        click to enlarge
-                      </span>
+                      <div className="gallery-info">
+                        <span className="gallery-count">
+                          <span className="gallery-count-number">
+                            {selectedThemeData.images.length}
+                          </span>{" "}
+                          ENTRIES
+                        </span>
+                        <span className="gallery-hint">
+                          <FiEye size={11} />
+                          click to view
+                        </span>
+                      </div>
+                      <div className="gallery-view-modes">
+                        <button
+                          className={`view-mode-btn ${viewMode === "grid" ? "active" : ""}`}
+                          onClick={() => setViewMode("grid")}
+                          title="Grid View"
+                        >
+                          <span className="view-mode-icon">⊞</span>
+                          GRID
+                        </button>
+                        <button
+                          className={`view-mode-btn ${viewMode === "scroll" ? "active" : ""}`}
+                          onClick={() => setViewMode("scroll")}
+                          title="Scroll View"
+                        >
+                          <span className="view-mode-icon">⊟</span>
+                          SCROLL
+                        </button>
+                      </div>
                     </div>
 
-                    {/* Custom layouts */}
-                    {selectedThemeData.customLayout === "vermillion" ? (
-                      <div className="gallery-grid-custom vermillion-layout">
-                        <div className="gallery-standard-section">
-                          {selectedThemeData.images
-                            .slice(0, 12)
-                            .map((image, idx) => (
-                              <div
-                                key={idx}
-                                className="gallery-item"
-                                onClick={() => openLightbox(idx)}
-                              >
-                                <img
-                                  src={image.src}
-                                  alt={`${selectedThemeData.name} design ${idx + 1}`}
-                                  loading="lazy"
-                                />
-                                <div className="gallery-item-overlay">
-                                  <span className="gallery-item-number">
-                                    #{String(idx + 1).padStart(2, "0")}
-                                  </span>
-                                  <FiEye
-                                    size={14}
-                                    className="gallery-item-eye"
-                                  />
-                                </div>
-                                {image.credits && (
-                                  <span className="gallery-item-credit-indicator">
-                                    <FiInfo size={10} />
-                                  </span>
-                                )}
-                              </div>
-                            ))}
-                        </div>
-
-                        <div className="gallery-wide-row">
-                          <div
-                            className="gallery-item gallery-item-wide"
-                            onClick={() => openLightbox(12)}
-                          >
-                            <img
-                              src={selectedThemeData.images[12].src}
-                              alt={`${selectedThemeData.name} design 14`}
-                              loading="lazy"
-                            />
-                            <div className="gallery-item-overlay">
-                              <span className="gallery-item-number">#14</span>
-                              <FiEye size={14} className="gallery-item-eye" />
-                            </div>
-                          </div>
-                        </div>
-
-                        <div className="gallery-standard-section gallery-final-row">
-                          <div
-                            className="gallery-item"
-                            onClick={() => openLightbox(13)}
-                          >
-                            <img
-                              src={selectedThemeData.images[13].src}
-                              alt={`${selectedThemeData.name} design 13`}
-                              loading="lazy"
-                            />
-                            <div className="gallery-item-overlay">
-                              <span className="gallery-item-number">#13</span>
-                              <FiEye size={14} className="gallery-item-eye" />
-                            </div>
-                          </div>
-                          <div
-                            className="gallery-item"
-                            onClick={() => openLightbox(14)}
-                          >
-                            <img
-                              src={selectedThemeData.images[14].src}
-                              alt={`${selectedThemeData.name} design 15`}
-                              loading="lazy"
-                            />
-                            <div className="gallery-item-overlay">
-                              <span className="gallery-item-number">#15</span>
-                              <FiEye size={14} className="gallery-item-eye" />
-                            </div>
-                          </div>
-                          <div
-                            className="gallery-item"
-                            onClick={() => openLightbox(15)}
-                          >
-                            <img
-                              src={selectedThemeData.images[15].src}
-                              alt={`${selectedThemeData.name} design 16`}
-                              loading="lazy"
-                            />
-                            <div className="gallery-item-overlay">
-                              <span className="gallery-item-number">#16</span>
-                              <FiEye size={14} className="gallery-item-eye" />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    ) : selectedThemeData.customLayout === "darkest" ? (
-                      <div className="gallery-grid-custom darkest-layout">
-                        <div className="gallery-standard-section">
-                          {selectedThemeData.images
-                            .slice(0, 9)
-                            .map((image, idx) => (
-                              <div
-                                key={idx}
-                                className="gallery-item"
-                                onClick={() => openLightbox(idx)}
-                              >
-                                <img
-                                  src={image.src}
-                                  alt={`${selectedThemeData.name} design ${idx + 1}`}
-                                  loading="lazy"
-                                />
-                                <div className="gallery-item-overlay">
-                                  <span className="gallery-item-number">
-                                    #{String(idx + 1).padStart(2, "0")}
-                                  </span>
-                                  <FiEye
-                                    size={14}
-                                    className="gallery-item-eye"
-                                  />
-                                </div>
-                                {image.credits && (
-                                  <span className="gallery-item-credit-indicator">
-                                    <FiInfo size={10} />
-                                  </span>
-                                )}
-                              </div>
-                            ))}
-                        </div>
-
-                        <div className="gallery-special-section darkest-special-section">
-                          <div className="gallery-darkest-left">
+                    {/* Scroll Mode */}
+                    {viewMode === "scroll" && (
+                      <div className="gallery-carousel">
+                        <div className="carousel-track">
+                          {selectedThemeData.images.map((image, idx) => (
                             <div
-                              className="gallery-item gallery-item-tall gallery-item-dn10"
-                              onClick={() => openLightbox(9)}
+                              key={idx}
+                              className="carousel-item"
+                              onClick={() => openLightbox(idx)}
                             >
-                              <img
-                                src={selectedThemeData.images[9].src}
-                                alt={`${selectedThemeData.name} design 10`}
-                                loading="lazy"
-                              />
-                              <div className="gallery-item-overlay">
-                                <span className="gallery-item-number">#10</span>
-                                <FiEye size={14} className="gallery-item-eye" />
+                              <div className="carousel-item-inner">
+                                <img
+                                  src={image.src}
+                                  alt={`${selectedThemeData.name} design ${idx + 1}`}
+                                  loading="lazy"
+                                />
+                                <div className="carousel-item-overlay">
+                                  <span className="carousel-item-number">
+                                    ENTRY #{String(idx + 1).padStart(2, "0")}
+                                  </span>
+                                </div>
                               </div>
                             </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
 
-                            <div className="gallery-item-dn10b">
-                              <img
-                                src={selectedThemeData.images[10].src}
-                                alt={`${selectedThemeData.name} design 11`}
-                                loading="lazy"
-                              />
+                    {/* Grid Mode */}
+                    {viewMode === "grid" && (
+                      <>
+                        {selectedThemeData.customLayout === "vermillion" ? (
+                          <div className="gallery-grid-custom vermillion-layout">
+                            <div className="gallery-standard-section">
+                              {selectedThemeData.images
+                                .slice(0, 12)
+                                .map((image, idx) => (
+                                  <div
+                                    key={idx}
+                                    className="gallery-item"
+                                    onClick={() => openLightbox(idx)}
+                                  >
+                                    <img
+                                      src={image.src}
+                                      alt={`${selectedThemeData.name} design ${idx + 1}`}
+                                      loading="lazy"
+                                    />
+                                    <div className="gallery-item-overlay">
+                                      <span className="gallery-item-number">
+                                        ENTRY #
+                                        {String(idx + 1).padStart(2, "0")}
+                                      </span>
+                                    </div>
+                                  </div>
+                                ))}
                             </div>
-                          </div>
 
-                          <div className="gallery-darkest-right">
-                            {[11, 12, 13, 14].map((imageIndex) => (
+                            <div className="gallery-wide-row">
                               <div
-                                key={imageIndex}
-                                className="gallery-item"
-                                onClick={() => openLightbox(imageIndex)}
+                                className="gallery-item gallery-item-wide"
+                                onClick={() => openLightbox(12)}
                               >
                                 <img
-                                  src={selectedThemeData.images[imageIndex].src}
-                                  alt={`${selectedThemeData.name} design ${imageIndex + 1}`}
+                                  src={selectedThemeData.images[12].src}
+                                  alt={`${selectedThemeData.name} design 14`}
                                   loading="lazy"
                                 />
                                 <div className="gallery-item-overlay">
                                   <span className="gallery-item-number">
-                                    #{String(imageIndex + 1).padStart(2, "0")}
+                                    ENTRY #14
                                   </span>
-                                  <FiEye
-                                    size={14}
-                                    className="gallery-item-eye"
+                                </div>
+                              </div>
+                            </div>
+
+                            <div className="gallery-standard-section gallery-final-row">
+                              <div
+                                className="gallery-item"
+                                onClick={() => openLightbox(13)}
+                              >
+                                <img
+                                  src={selectedThemeData.images[13].src}
+                                  alt={`${selectedThemeData.name} design 13`}
+                                  loading="lazy"
+                                />
+                                <div className="gallery-item-overlay">
+                                  <span className="gallery-item-number">
+                                    ENTRY #13
+                                  </span>
+                                </div>
+                              </div>
+                              <div
+                                className="gallery-item"
+                                onClick={() => openLightbox(14)}
+                              >
+                                <img
+                                  src={selectedThemeData.images[14].src}
+                                  alt={`${selectedThemeData.name} design 15`}
+                                  loading="lazy"
+                                />
+                                <div className="gallery-item-overlay">
+                                  <span className="gallery-item-number">
+                                    ENTRY #15
+                                  </span>
+                                </div>
+                              </div>
+                              <div
+                                className="gallery-item"
+                                onClick={() => openLightbox(15)}
+                              >
+                                <img
+                                  src={selectedThemeData.images[15].src}
+                                  alt={`${selectedThemeData.name} design 16`}
+                                  loading="lazy"
+                                />
+                                <div className="gallery-item-overlay">
+                                  <span className="gallery-item-number">
+                                    ENTRY #16
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        ) : selectedThemeData.customLayout === "darkest" ? (
+                          <div className="gallery-grid-custom darkest-layout">
+                            <div className="gallery-standard-section">
+                              {selectedThemeData.images
+                                .slice(0, 9)
+                                .map((image, idx) => (
+                                  <div
+                                    key={idx}
+                                    className="gallery-item"
+                                    onClick={() => openLightbox(idx)}
+                                  >
+                                    <img
+                                      src={image.src}
+                                      alt={`${selectedThemeData.name} design ${idx + 1}`}
+                                      loading="lazy"
+                                    />
+                                    <div className="gallery-item-overlay">
+                                      <span className="gallery-item-number">
+                                        ENTRY #
+                                        {String(idx + 1).padStart(2, "0")}
+                                      </span>
+                                    </div>
+                                  </div>
+                                ))}
+                            </div>
+
+                            <div className="gallery-special-section darkest-special-section">
+                              <div className="gallery-darkest-left">
+                                <div
+                                  className="gallery-item gallery-item-tall gallery-item-dn10"
+                                  onClick={() => openLightbox(9)}
+                                >
+                                  <img
+                                    src={selectedThemeData.images[9].src}
+                                    alt={`${selectedThemeData.name} design 10`}
+                                    loading="lazy"
                                   />
+                                  <div className="gallery-item-overlay">
+                                    <span className="gallery-item-number">
+                                      ENTRY #10
+                                    </span>
+                                  </div>
+                                </div>
+
+                                <div className="gallery-item-dn10b">
+                                  <img
+                                    src={selectedThemeData.images[10].src}
+                                    alt={`${selectedThemeData.name} design 11`}
+                                    loading="lazy"
+                                  />
+                                </div>
+                              </div>
+
+                              <div className="gallery-darkest-right">
+                                {[11, 12, 13, 14].map((imageIndex) => (
+                                  <div
+                                    key={imageIndex}
+                                    className="gallery-item"
+                                    onClick={() => openLightbox(imageIndex)}
+                                  >
+                                    <img
+                                      src={
+                                        selectedThemeData.images[imageIndex].src
+                                      }
+                                      alt={`${selectedThemeData.name} design ${imageIndex + 1}`}
+                                      loading="lazy"
+                                    />
+                                    <div className="gallery-item-overlay">
+                                      <span className="gallery-item-number">
+                                        ENTRY #
+                                        {String(imageIndex + 1).padStart(
+                                          2,
+                                          "0",
+                                        )}
+                                      </span>
+                                    </div>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+                        ) : (
+                          <div className="gallery-grid">
+                            {selectedThemeData.images.map((image, idx) => (
+                              <div
+                                key={idx}
+                                className="gallery-item"
+                                onClick={() => openLightbox(idx)}
+                              >
+                                <img
+                                  src={image.src}
+                                  alt={`${selectedThemeData.name} design ${idx + 1}`}
+                                  loading="lazy"
+                                />
+                                <div className="gallery-item-overlay">
+                                  <span className="gallery-item-number">
+                                    ENTRY #{String(idx + 1).padStart(2, "0")}
+                                  </span>
                                 </div>
                               </div>
                             ))}
                           </div>
-                        </div>
-                      </div>
-                    ) : (
-                      <div className="gallery-grid">
-                        {selectedThemeData.images.map((image, idx) => (
-                          <div
-                            key={idx}
-                            className="gallery-item"
-                            onClick={() => openLightbox(idx)}
-                          >
-                            <img
-                              src={image.src}
-                              alt={`${selectedThemeData.name} design ${idx + 1}`}
-                              loading="lazy"
-                            />
-                            <div className="gallery-item-overlay">
-                              <span className="gallery-item-number">
-                                #{String(idx + 1).padStart(2, "0")}
-                              </span>
-                              <FiEye size={14} className="gallery-item-eye" />
+                        )}
+
+                        {/* Pagination Controls - Commented out, all images load by default
+                        {viewMode === "grid" &&
+                          !selectedThemeData.customLayout &&
+                          visibleCount < selectedThemeData.images.length && (
+                            <div className="gallery-pagination">
+                              <div className="pagination-info">
+                                <span className="pagination-label">
+                                  SHOWING:
+                                </span>
+                                <span className="pagination-count">
+                                  {visibleCount} /{" "}
+                                  {selectedThemeData.images.length}
+                                </span>
+                              </div>
+                              <button
+                                className="load-more-btn"
+                                onClick={() =>
+                                  setVisibleCount((prev) =>
+                                    Math.min(
+                                      prev + 12,
+                                      selectedThemeData.images.length,
+                                    ),
+                                  )
+                                }
+                              >
+                                <span className="load-more-icon">▼</span>
+                                LOAD MORE ENTRIES
+                                <span className="load-more-arrow">→</span>
+                              </button>
                             </div>
-                            {image.credits && (
-                              <span className="gallery-item-credit-indicator">
-                                <FiInfo size={10} />
-                              </span>
-                            )}
-                          </div>
-                        ))}
-                      </div>
+                          )}
+                        */}
+                      </>
                     )}
                   </>
                 ) : (

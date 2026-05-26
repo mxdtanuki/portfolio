@@ -118,7 +118,7 @@
 
 .skill-item:hover {
   border-color: var(--accent-pink);
-  transform: translateY(-2px);
+  /* transform: translateY(-2px); */ /* Removed - using mobile-style hover */
   box-shadow: 0 3px 8px rgba(255, 153, 204, 0.2);
 }
 

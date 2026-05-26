@@ -5,6 +5,7 @@
   background: var(--bg-white);
   position: relative;
   overflow: hidden;
+  width: 100%;
 }
 
 /* retro dot-grid overlay */
@@ -231,10 +232,11 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 2.5rem;
   position: relative;
   z-index: 2;
   width: 100%;
+  padding: 0 1rem;
 }
 
 /* ─── Bio Card ─── */
@@ -924,8 +926,14 @@
   }
 
   .container {
-    width: 92%;
-    padding: 0 0.75rem;
+    width: 100%;
+    padding: 0 1rem;
+  }
+
+  .about-content {
+    gap: 2rem;
+    padding: 0 0.5rem;
+    max-width: 100%;
   }
 
   .section-header {
@@ -959,6 +967,7 @@
   .stats-overview {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
+    padding: 0;
   }
 
   .stat-item {
@@ -1007,10 +1016,6 @@
 
   .about-content {
     gap: 2.5rem;
-  }
-
-  .about-bg-decor {
-    display: none;
   }
 
   .org-item:hover {
@@ -1082,12 +1087,16 @@
 /* ─── Responsive: Mobile (max-width: 480px) ─── */
 @media (max-width: 480px) {
   .about {
-    padding: 2.5rem 0;
+    padding: 3rem 0;
   }
 
   .container {
-    width: 94%;
-    padding: 0 0.5rem;
+    width: 100%;
+    padding: 0 1rem;
+  }
+
+  .about-content {
+    padding: 0;
   }
 
   .section-header {

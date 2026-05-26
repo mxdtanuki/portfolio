@@ -1,3 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+@import "./assets/retro-decorations.css";
+
 @font-face {
   font-family: "Dela Gothic One";
   src: url("/src/assets/website/fonts/DelaGothicOne-Regular.ttf")

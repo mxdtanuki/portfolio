@@ -93,8 +93,24 @@
 .projects-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.25rem;
+  gap: 1.5rem;
   width: 100%;
+}
+
+/* Desktop: 2 columns for better visibility */
+@media (min-width: 768px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.8rem;
+  }
+}
+
+/* Large desktop: 3 columns */
+@media (min-width: 1200px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
 }
 
 /* ===== PROJECT CARD ===== */
@@ -127,6 +143,28 @@
   flex-direction: column;
 }
 
+/* Retro scanline overlay */
+.project-card__inner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.02) 0px,
+    rgba(0, 0, 0, 0.02) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+}
+
+.project-card__inner:hover::after {
+  opacity: 1;
+}
+
 .project-card__inner::before {
   content: "";
   position: absolute;
@@ -146,7 +184,7 @@
 }
 
 .project-card__inner:hover {
-  transform: translateY(-10px);
+  /* transform: translateY(-10px); */ /* Removed - using mobile-style hover */
   box-shadow:
     0 12px 32px rgba(255, 153, 204, 0.25),
     0 4px 12px rgba(255, 193, 227, 0.15);
@@ -213,17 +251,31 @@
 }
 
 .project-type-badge {
-  background: rgba(255, 193, 227, 0.4);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 193, 227, 0.5),
+    rgba(255, 228, 241, 0.7)
+  );
   color: var(--text-dark);
-  padding: 0.3rem 0.75rem;
+  padding: 0.35rem 0.85rem;
   border-radius: 0.5rem;
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.5px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
   border: 1.5px solid var(--border-color);
   text-transform: uppercase;
   white-space: nowrap;
   flex-shrink: 0;
+  font-family: "Courier New", monospace;
+  box-shadow: 0 2px 6px rgba(255, 153, 204, 0.15);
+  transition: all 0.3s ease;
+}
+
+.project-card__inner:hover .project-type-badge {
+  background: var(--accent-pink);
+  color: white;
+  border-color: var(--accent-pink);
+  /* transform: scale(1.05); */ /* Removed - using mobile-style hover */
 }
 
 /* Uncomment below to use year styling instead of badge */
@@ -262,6 +314,77 @@
   border-radius: 2px;
   margin: 1rem 0;
   flex-shrink: 0;
+}
+
+.project-mockup-frame {
+  position: relative;
+  width: 100%;
+  margin: 1.25rem 0;
+  padding: 0.75rem;
+  background: linear-gradient(145deg, #ffb3d9 0%, #ff99cc 100%);
+  border-radius: 0.75rem;
+  border: 3px solid #ff66b3;
+  box-shadow:
+    inset 0 2px 8px rgba(255, 153, 204, 0.4),
+    inset 0 -2px 4px rgba(255, 255, 255, 0.3),
+    0 4px 12px rgba(255, 153, 204, 0.3);
+}
+
+.project-mockup-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 0.375rem;
+  pointer-events: none;
+}
+
+.project-mockup-screen {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background: #fff;
+  border-radius: 0.375rem;
+  overflow: hidden;
+  box-shadow:
+    inset 0 0 20px rgba(255, 153, 204, 0.15),
+    inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.project-mockup-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.project-card__inner:hover .project-mockup-image {
+  transform: scale(1.02);
+}
+
+.project-mockup-scanlines {
+  display: none;
+}
+
+.project-mockup-grain {
+  position: absolute;
+  inset: 0;
+  background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noise)" opacity="0.05"/%3E%3C/svg%3E');
+  background-size: 200px 200px;
+  pointer-events: none;
+  opacity: 0.3;
+  mix-blend-mode: overlay;
+  z-index: 1;
+}
+
+.project-card__inner:hover .project-mockup-frame {
+  border-color: #ff3385;
+  box-shadow:
+    inset 0 2px 8px rgba(255, 153, 204, 0.4),
+    inset 0 -2px 4px rgba(255, 255, 255, 0.3),
+    0 4px 12px rgba(255, 153, 204, 0.3),
+    0 0 25px rgba(255, 153, 204, 0.6);
 }
 
 .project-description {
@@ -311,7 +434,7 @@
 
 .tech-badge:hover {
   border-color: var(--accent-pink);
-  transform: translateY(-2px);
+  /* transform: translateY(-2px); */ /* Removed - using mobile-style hover */
   box-shadow: 0 3px 8px rgba(255, 153, 204, 0.2);
 }
 
@@ -334,22 +457,58 @@
   font-weight: 700;
   font-size: 0.88rem;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  padding: 0.6rem 1.4rem;
+  padding: 0.7rem 1.5rem;
   border-radius: 0.75rem;
-  background: var(--light-pink);
-  border: 1.5px solid transparent;
+  background: linear-gradient(
+    135deg,
+    var(--light-pink),
+    rgba(255, 228, 241, 0.7)
+  );
+  border: 1.5px solid var(--border-color);
   letter-spacing: 0.3px;
   flex: 1;
   min-width: fit-content;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(255, 153, 204, 0.1);
+}
+
+/* Retro pixel corner indicators */
+.project-link::before,
+.project-link::after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--accent-pink);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.project-link::before {
+  top: 6px;
+  left: 6px;
+}
+
+.project-link::after {
+  bottom: 6px;
+  right: 6px;
+}
+
+.project-link:hover::before,
+.project-link:hover::after {
+  opacity: 0.6;
 }
 
 .project-link:hover {
   background: var(--accent-pink);
   color: white;
   border-color: var(--accent-pink);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(255, 153, 204, 0.35);
+  /* transform: translateY(-3px); */ /* Removed - using mobile-style hover */
+  box-shadow:
+    0 6px 16px rgba(255, 153, 204, 0.35),
+    0 0 20px rgba(255, 153, 204, 0.2);
 }
 
 /* Demo logins button: styled like project links but acts as a toggle */
@@ -492,6 +651,15 @@
     font-size: 0.78rem;
     padding: 0.3rem 0.75rem;
   }
+
+  .project-mockup-frame {
+    padding: 0.6rem;
+    border-width: 2.5px;
+  }
+
+  .project-mockup-frame::before {
+    inset: 0.6rem;
+  }
 }
 
 /* ===== RESPONSIVE: Mobile (max-width: 480px) ===== */
@@ -608,7 +776,30 @@
     gap: 0.4rem;
   }
 
-  /* Hide corner dots on small mobile */
+  .project-mockup-frame {
+    margin: 1rem 0;
+    padding: 0.5rem;
+    border-width: 2px;
+    border-radius: 0.625rem;
+  }
+
+  .project-mockup-frame::before {
+    inset: 0.5rem;
+    border-radius: 0.25rem;
+  }
+
+  .project-card__inner:hover .project-mockup-image {
+    transform: scale(1.01);
+  }
+
+  .project-card__inner:hover .project-mockup-frame {
+    box-shadow:
+      inset 0 2px 8px rgba(255, 153, 204, 0.4),
+      inset 0 -2px 4px rgba(255, 255, 255, 0.3),
+      0 4px 12px rgba(255, 153, 204, 0.3),
+      0 0 20px rgba(255, 153, 204, 0.5);
+  }
+
   .project-card__dot {
     display: none;
   }

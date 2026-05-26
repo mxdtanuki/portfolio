@@ -3,6 +3,10 @@ import { FaHtml5, FaCss3Alt, FaReact } from "react-icons/fa";
 import { SiJavascript, SiVercel } from "react-icons/si";
 import { useState } from "react";
 import "./WebProjects.css";
+import globalinkedMockup from "../assets/mockups/globalinked.png";
+import laRMockup from "../assets/mockups/la r.png";
+import calendarMockup from "../assets/mockups/calendar.png";
+import imprimoMockup from "../assets/mockups/imprimo.png";
 
 const techIcons = {
   HTML: <FaHtml5 />,
@@ -23,8 +27,13 @@ export default function WebProjects() {
       badge: "WEB PORTAL",
       year: "2025",
       role: "Frontend Developer",
+      mockup: globalinkedMockup,
+      description:
+        "A web-based monitoring system developed for the PUP Office of International Affairs. Implemented the frontend of the public web portal for a personal demo deployment used for portfolio presentation.",
+      /*
       description:
         "A web-based monitoring system developed for the PUP Office of International Affairs. Implemented the frontend of the public web portal for a personal demo deployment used for portfolio presentation. Focused on translating designs into responsive React components and maintaining a consistent user experience across the multi-page interface.",
+      */
       technologies: ["HTML", "CSS", "JavaScript", "Figma", "UI/UX"],
       live: "https://mxdtanuki.github.io/globalinked-html/",
       linkLabel: "View Live",
@@ -38,8 +47,13 @@ export default function WebProjects() {
       badge: "WEB APP",
       year: "2024",
       role: "Developer",
+      mockup: laRMockup,
+      description:
+        "A themed restaurant landing page inspired by Ratatouille. Built as a single-page web app with menu browsing, ordering mockups, and contact sections, focusing on an elegant animated UI and immersive design.",
+      /*
       description:
         "A browser-based restaurant landing page inspired by French cuisine and Pixar's Ratatouille. Built as a single-page web application featuring menu browsing, ordering interface mockups, and contact sections. Focused on creating an elegant, animated UI that reflects a premium restaurant experience while translating a themed concept into an immersive web design.",
+      */
       technologies: ["HTML", "CSS", "JavaScript"],
       live: "https://mxdtanuki.github.io/la-ratatouille",
       linkLabel: "View Live",
@@ -50,6 +64,7 @@ export default function WebProjects() {
       badge: "WEB APP",
       year: "2024",
       role: "Developer",
+      mockup: calendarMockup,
       description:
         "An interactive calendar web application featuring a fully dynamic calendar view. Built with a clean browser interface and smooth navigation for browsing dates across different years.",
       technologies: ["HTML", "CSS", "JavaScript"],
@@ -62,8 +77,13 @@ export default function WebProjects() {
       badge: "WEB PLATFORM",
       year: "2026",
       role: "Full-Stack Developer / UI-UX Designer",
+      mockup: imprimoMockup,
+      description:
+        "A print-to-door platform connecting customers and print shops in one system. Designed the UI/UX and built a multi-role web app with dashboards for Customer, Shop, Admin, and Super Admin. Includes order tracking, payments, receipts, and shop management.",
+      /*
       description:
         "A print-to-door network platform that connects customers and print shops in one web-based system. Designed the full UI/UX system and developed the multi-role web application with dedicated dashboards for Customers, Shops, Admin, and Super Admin. Includes order management, payments & receipts, shop operations, and real-time workflow tracking accessible through the browser.",
+      */
       technologies: [
         "React JS",
         "CSS",
@@ -129,6 +149,20 @@ export default function WebProjects() {
                 <p className="project-role">{project.role}</p>
 
                 <div className="project-divider"></div>
+
+                {project.mockup && (
+                  <div className="project-mockup-frame">
+                    <div className="project-mockup-screen">
+                      <img
+                        src={project.mockup}
+                        alt={`${project.title} preview`}
+                        className="project-mockup-image"
+                      />
+                      <div className="project-mockup-scanlines"></div>
+                      <div className="project-mockup-grain"></div>
+                    </div>
+                  </div>
+                )}
 
                 <p className="project-description">{project.description}</p>
 

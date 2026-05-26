@@ -1,0 +1,534 @@
+/* ═══════════════════════════════════════════════════════════
+   RETRO DECORATIONS & EFFECTS
+   Shared retro UI elements for portfolio sections
+   ═══════════════════════════════════════════════════════════ */
+
+/* ─── CRT Screen Effect ─── */
+.retro-crt-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.03) 0px,
+    rgba(0, 0, 0, 0.03) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  opacity: 0.4;
+}
+
+/* ─── Scanline Animation ─── */
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.retro-scanline {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 9;
+}
+
+.retro-scanline::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 20%;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.03) 50%,
+    transparent 100%
+  );
+  animation: scanline 4s linear infinite;
+}
+
+/* ─── VHS Noise Overlay ─── */
+@keyframes vhsNoise {
+  0%,
+  100% {
+    opacity: 0.02;
+    transform: translate(0, 0);
+  }
+  10% {
+    opacity: 0.05;
+    transform: translate(-2%, 1%);
+  }
+  20% {
+    opacity: 0.03;
+    transform: translate(1%, -1%);
+  }
+  30% {
+    opacity: 0.04;
+    transform: translate(-1%, 2%);
+  }
+  40% {
+    opacity: 0.02;
+    transform: translate(2%, 0);
+  }
+  50% {
+    opacity: 0.06;
+    transform: translate(0, -2%);
+  }
+  60% {
+    opacity: 0.03;
+    transform: translate(1%, 1%);
+  }
+  70% {
+    opacity: 0.04;
+    transform: translate(-1%, -1%);
+  }
+  80% {
+    opacity: 0.02;
+    transform: translate(0, 2%);
+  }
+  90% {
+    opacity: 0.05;
+    transform: translate(2%, -1%);
+  }
+}
+
+.retro-noise {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 8;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.02) 2px,
+      rgba(0, 0, 0, 0.02) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.02) 2px,
+      rgba(0, 0, 0, 0.02) 4px
+    );
+  opacity: 0.3;
+  animation: vhsNoise 0.5s infinite;
+}
+
+/* ─── Pixel Grid Overlay ─── */
+.retro-pixel-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 1px,
+      rgba(0, 0, 0, 0.015) 1px,
+      rgba(0, 0, 0, 0.015) 2px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 1px,
+      rgba(0, 0, 0, 0.015) 1px,
+      rgba(0, 0, 0, 0.015) 2px
+    );
+  opacity: 0.5;
+  z-index: 1;
+}
+
+/* ─── Arcade Border Frame ─── */
+.retro-arcade-border {
+  position: relative;
+  border: 2px solid rgba(255, 153, 204, 0.3);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+    0 0 20px rgba(255, 153, 204, 0.1);
+}
+
+.retro-arcade-border::before,
+.retro-arcade-border::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border: 2px solid var(--accent-pink);
+  opacity: 0.5;
+}
+
+.retro-arcade-border::before {
+  top: -1px;
+  left: -1px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.retro-arcade-border::after {
+  bottom: -1px;
+  right: -1px;
+  border-left: none;
+  border-top: none;
+}
+
+/* ─── Neon Glow Effect ─── */
+@keyframes neonGlow {
+  0%,
+  100% {
+    text-shadow:
+      0 0 10px rgba(255, 153, 204, 0.8),
+      0 0 20px rgba(255, 153, 204, 0.5),
+      0 0 30px rgba(255, 153, 204, 0.3);
+  }
+  50% {
+    text-shadow:
+      0 0 15px rgba(255, 153, 204, 1),
+      0 0 25px rgba(255, 153, 204, 0.7),
+      0 0 40px rgba(255, 153, 204, 0.4);
+  }
+}
+
+.retro-neon-text {
+  color: var(--accent-pink);
+  animation: neonGlow 2s ease-in-out infinite;
+}
+
+/* ─── Glitch Effect ─── */
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+.retro-glitch {
+  position: relative;
+  display: inline-block;
+}
+
+.retro-glitch:hover::before,
+.retro-glitch:hover::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.retro-glitch:hover::before {
+  color: rgba(255, 0, 0, 0.7);
+  animation: glitch 0.3s infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+  transform: translate(-2px, 0);
+}
+
+.retro-glitch:hover::after {
+  color: rgba(0, 255, 255, 0.7);
+  animation: glitch 0.3s infinite reverse;
+  clip-path: polygon(0 45%, 100% 45%, 100% 100%, 0 100%);
+  transform: translate(2px, 0);
+}
+
+/* ─── Retro Terminal Text ─── */
+.retro-terminal-text {
+  font-family: "Courier New", monospace;
+  letter-spacing: 1.5px;
+  color: #00ff00;
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+  font-weight: 600;
+}
+
+/* ─── Pixel Border ─── */
+.retro-pixel-border {
+  border: 3px solid;
+  border-image: repeating-linear-gradient(
+      45deg,
+      var(--accent-pink) 0,
+      var(--accent-pink) 4px,
+      transparent 4px,
+      transparent 8px
+    )
+    3;
+}
+
+/* ─── Archive Label ─── */
+.retro-archive-label {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px dashed var(--border-color);
+  border-radius: 4px;
+  font-family: "Courier New", monospace;
+  font-size: 0.7rem;
+  letter-spacing: 1.5px;
+  color: var(--text-medium);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* ─── Retro Loading Bar ─── */
+@keyframes loadingBar {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.retro-loading-bar {
+  width: 100%;
+  height: 4px;
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border-color);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.retro-loading-bar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--accent-pink),
+    var(--light-pink),
+    var(--accent-pink)
+  );
+  animation: loadingBar 2s ease-in-out infinite;
+}
+
+/* ─── Holographic Effect ─── */
+@keyframes holographic {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.retro-holographic {
+  background: linear-gradient(
+    45deg,
+    rgba(255, 153, 204, 0.2),
+    rgba(193, 227, 255, 0.2),
+    rgba(255, 228, 181, 0.2),
+    rgba(221, 160, 221, 0.2)
+  );
+  background-size: 300% 300%;
+  animation: holographic 6s ease infinite;
+}
+
+/* ─── Retro Button Base ─── */
+.retro-button {
+  padding: 0.7rem 1.5rem;
+  background: linear-gradient(
+    135deg,
+    var(--light-pink),
+    rgba(255, 228, 241, 0.7)
+  );
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  font-family: "Courier New", monospace;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 4px 12px rgba(255, 153, 204, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.retro-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.retro-button:hover::before {
+  left: 100%;
+}
+
+.retro-button:hover {
+  background: var(--accent-pink);
+  color: white;
+  border-color: var(--accent-pink);
+  transform: translateY(-3px);
+  box-shadow:
+    0 6px 20px rgba(255, 153, 204, 0.35),
+    0 0 20px rgba(255, 153, 204, 0.2);
+}
+
+.retro-button:active {
+  transform: translateY(-1px);
+  box-shadow:
+    0 3px 10px rgba(255, 153, 204, 0.25),
+    0 0 15px rgba(255, 153, 204, 0.15);
+}
+
+/* ─── CRT Flicker on Hover ─── */
+@keyframes crtFlicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.95;
+  }
+}
+
+.retro-crt-flicker:hover {
+  animation: crtFlicker 0.1s ease-in-out 3;
+}
+
+/* ─── Retro Card ─── */
+.retro-card {
+  background: white;
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 4px 16px rgba(255, 193, 227, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  transition: all 0.35s ease;
+}
+
+.retro-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.02) 0px,
+    rgba(0, 0, 0, 0.02) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.retro-card:hover {
+  border-color: var(--accent-pink);
+  box-shadow:
+    0 12px 32px rgba(255, 153, 204, 0.25),
+    0 0 20px rgba(255, 153, 204, 0.1);
+  transform: translateY(-5px);
+}
+
+.retro-card:hover::before {
+  opacity: 1;
+}
+
+/* ─── Responsive Helpers ─── */
+@media (max-width: 768px) {
+  .retro-crt-overlay,
+  .retro-scanline,
+  .retro-noise {
+    display: none;
+  }
+}
+
+/* ─── Animation Utilities ─── */
+.retro-fade-in {
+  animation: fadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.retro-slide-in {
+  animation: slideIn 0.5s ease forwards;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ─── Retro Badge ─── */
+.retro-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.7rem;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 193, 227, 0.5),
+    rgba(255, 228, 241, 0.7)
+  );
+  border: 1.5px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-family: "Courier New", monospace;
+  color: var(--text-dark);
+  box-shadow: 0 2px 6px rgba(255, 153, 204, 0.1);
+  transition: all 0.3s ease;
+}
+
+.retro-badge:hover {
+  background: var(--accent-pink);
+  color: white;
+  border-color: var(--accent-pink);
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(255, 153, 204, 0.25);
+}
