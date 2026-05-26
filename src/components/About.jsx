@@ -295,6 +295,50 @@ export default function About() {
             </div>
           </div>
 
+          {/* ========== STATS OVERVIEW SECTION (COMMENTED OUT) ========== */}
+          {/* Uncomment below to show stats overview with numbers */}
+          {/*
+          <div className="stats-overview">
+            <div className="stat-item">
+              <div className="stat-icon">
+                <FiCode size={20} />
+              </div>
+              <div className="stat-content">
+                <span className="stat-number">15+</span>
+                <span className="stat-label">Projects Completed</span>
+              </div>
+            </div>
+            <div className="stat-item">
+              <div className="stat-icon">
+                <FiPenTool size={20} />
+              </div>
+              <div className="stat-content">
+                <span className="stat-number">25+</span>
+                <span className="stat-label">Design Works</span>
+              </div>
+            </div>
+            <div className="stat-item">
+              <div className="stat-icon">
+                <FiStar size={20} />
+              </div>
+              <div className="stat-content">
+                <span className="stat-number">30+</span>
+                <span className="stat-label">Skills & Tools</span>
+              </div>
+            </div>
+            <div className="stat-item">
+              <div className="stat-icon">
+                <FiUsers size={20} />
+              </div>
+              <div className="stat-content">
+                <span className="stat-number">4</span>
+                <span className="stat-label">Organizations</span>
+              </div>
+            </div>
+          </div>
+          */}
+          {/* ========== END STATS OVERVIEW SECTION ========== */}
+
           {/* Leadership Section */}
           <div className="leadership-section">
             <div className="leadership-header">

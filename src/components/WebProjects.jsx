@@ -20,10 +20,11 @@ export default function WebProjects() {
     {
       id: 1,
       title: "✦ Globalinked",
+      badge: "WEB PORTAL",
       year: "2025",
       role: "Frontend Developer",
       description:
-        "A monitoring system developed for the PUP Office of International Affairs. Implemented the frontend of the public web portal for a personal demo deployment used for portfolio presentation. Focused on translating designs into responsive React components and maintaining a consistent user experience across views.",
+        "A web-based monitoring system developed for the PUP Office of International Affairs. Implemented the frontend of the public web portal for a personal demo deployment used for portfolio presentation. Focused on translating designs into responsive React components and maintaining a consistent user experience across the multi-page interface.",
       technologies: ["HTML", "CSS", "JavaScript", "Figma", "UI/UX"],
       live: "https://mxdtanuki.github.io/globalinked-html/",
       linkLabel: "View Live",
@@ -34,10 +35,11 @@ export default function WebProjects() {
     {
       id: 2,
       title: "✦ La Ratatouille",
+      badge: "WEB APP",
       year: "2024",
       role: "Developer",
       description:
-        "A restaurant landing page inspired by French cuisine and Pixar’s Ratatouille. Built as a frontend-only project with a single-page layout featuring menu browsing, ordering interface mockups, and contact sections. Focused on creating an elegant, animated UI that reflects a premium restaurant experience while translating a themed concept into a responsive web design.",
+        "A browser-based restaurant landing page inspired by French cuisine and Pixar's Ratatouille. Built as a single-page web application featuring menu browsing, ordering interface mockups, and contact sections. Focused on creating an elegant, animated UI that reflects a premium restaurant experience while translating a themed concept into an immersive web design.",
       technologies: ["HTML", "CSS", "JavaScript"],
       live: "https://mxdtanuki.github.io/la-ratatouille",
       linkLabel: "View Live",
@@ -45,10 +47,11 @@ export default function WebProjects() {
     {
       id: 3,
       title: "✦ Calendar App",
+      badge: "WEB APP",
       year: "2024",
       role: "Developer",
       description:
-        "An interactive calendar web application featuring a fully dynamic calendar view. Built with a clean UI and smooth navigation for browsing dates across different years.",
+        "An interactive calendar web application featuring a fully dynamic calendar view. Built with a clean browser interface and smooth navigation for browsing dates across different years.",
       technologies: ["HTML", "CSS", "JavaScript"],
       live: "https://mxdtanuki.github.io/2025-calendar/",
       linkLabel: "View Live",
@@ -56,10 +59,11 @@ export default function WebProjects() {
     {
       id: 4,
       title: "✦ IMPRIMO",
+      badge: "WEB PLATFORM",
       year: "2026",
       role: "Full-Stack Developer / UI-UX Designer",
       description:
-        "A print-to-door network platform that connects customers and print shops in one system. Designed the full UI/UX system and developed the multi-role web app with dashboards for Customers, Shops, Admin, and Super Admin. Includes order management, payments & receipts, shop operations, and real-time workflow tracking.",
+        "A print-to-door network platform that connects customers and print shops in one web-based system. Designed the full UI/UX system and developed the multi-role web application with dedicated dashboards for Customers, Shops, Admin, and Super Admin. Includes order management, payments & receipts, shop operations, and real-time workflow tracking accessible through the browser.",
       technologies: [
         "React JS",
         "CSS",
@@ -115,7 +119,11 @@ export default function WebProjects() {
 
                 <div className="project-header">
                   <h3 className="project-header__title">{project.title}</h3>
-                  <span className="project-year">{project.year}</span>
+                  {project.badge && (
+                    <span className="project-type-badge">{project.badge}</span>
+                  )}
+                  {/* Uncomment below to show year instead of badge */}
+                  {/* <span className="project-year">{project.year}</span> */}
                 </div>
 
                 <p className="project-role">{project.role}</p>

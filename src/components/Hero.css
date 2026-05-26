@@ -6,8 +6,8 @@
     var(--bg-white) 50%,
     var(--light-pink) 100%
   );
-  padding: 5rem 0 3rem;
-  margin-top: -40px;
+  padding: 6rem 0 3rem;
+  margin-top: 0;
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -181,24 +181,25 @@
 .hero-content {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--card-gap);
+  gap: 1.5rem;
   align-items: center;
   position: relative;
   z-index: 2;
   animation: fade-up 0.8s ease-out;
   text-align: center;
+  padding-top: 1rem;
 }
 
 .hero-left {
-  order: 2; /* photo below text on mobile */
+  order: 1; /* photo on top on mobile */
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.25rem;
+  gap: 1rem;
 }
 
 .hero-right {
-  order: 1; /* text above photo on mobile */
+  order: 2; /* text below photo on mobile */
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
@@ -289,10 +290,16 @@
 
 /* ===== TABLET+ (min-width: 640px) — two-column side-by-side ===== */
 @media (min-width: 640px) {
+  .hero {
+    padding: 5rem 0 3rem;
+    margin-top: -40px;
+  }
+
   .hero-content {
     grid-template-columns: 1fr 1fr;
     gap: 3rem;
     text-align: left;
+    padding-top: 0;
   }
 
   .hero-left {
@@ -303,6 +310,25 @@
   .hero-right {
     order: 2; /* text on right */
     align-items: flex-start;
+  }
+
+  .photo-wrapper {
+    max-width: none;
+  }
+
+  .profile-photo {
+    width: clamp(150px, 20vw, 240px);
+    height: clamp(150px, 20vw, 240px);
+  }
+
+  .ring-outer {
+    width: clamp(188px, 25vw, 284px);
+    height: clamp(188px, 25vw, 284px);
+  }
+
+  .ring-inner {
+    width: clamp(174px, 23vw, 265px);
+    height: clamp(174px, 23vw, 265px);
   }
 
   .hero-name {
@@ -364,11 +390,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  max-width: 200px;
+  margin: 0 auto;
 }
 
 .profile-photo {
-  width: clamp(150px, 20vw, 240px);
-  height: clamp(150px, 20vw, 240px);
+  width: clamp(160px, 40vw, 200px);
+  height: clamp(160px, 40vw, 200px);
   border-radius: 50%;
   object-fit: cover;
   border: 5px solid white;
@@ -397,15 +425,15 @@
 }
 
 .ring-outer {
-  width: clamp(188px, 25vw, 284px);
-  height: clamp(188px, 25vw, 284px);
+  width: clamp(198px, 48vw, 238px);
+  height: clamp(198px, 48vw, 238px);
   opacity: 0.3;
   animation: spin-slow 25s linear infinite;
 }
 
 .ring-inner {
-  width: clamp(174px, 23vw, 265px);
-  height: clamp(174px, 23vw, 265px);
+  width: clamp(184px, 45vw, 222px);
+  height: clamp(184px, 45vw, 222px);
   opacity: 0.15;
   border-style: dotted;
   animation: spin-slow 20s linear infinite reverse;
@@ -552,7 +580,6 @@
 .focus-item:hover {
   border-color: var(--accent-pink);
   background: var(--light-pink);
-  transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(255, 193, 227, 0.25);
 }
 
@@ -589,7 +616,6 @@
     var(--accent-pink)
   );
   color: white;
-  transform: translateY(-3px);
   box-shadow: 0 8px 28px rgba(255, 153, 204, 0.5);
 }
 
@@ -603,7 +629,6 @@
 .btn-secondary:hover {
   background: var(--accent-pink);
   color: white;
-  transform: translateY(-3px);
   box-shadow: 0 8px 28px rgba(255, 153, 204, 0.4);
 }
 

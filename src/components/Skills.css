@@ -60,9 +60,11 @@
 }
 
 .skill-category:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 20px rgba(102, 126, 234, 0.2);
-  border-top: 3px solid #667eea;
+  transform: none;
+  box-shadow:
+    0 12px 32px rgba(255, 153, 204, 0.25),
+    0 4px 12px rgba(255, 193, 227, 0.15);
+  border-top: 3px solid var(--accent-pink);
 }
 
 /* ===== Skill Header ===== */
@@ -115,10 +117,9 @@
 }
 
 .skill-item:hover {
-  background: #667eea;
-  color: white;
+  border-color: var(--accent-pink);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 3px 8px rgba(255, 153, 204, 0.2);
 }
 
 /* ===== RESPONSIVE: Tablet (max-width: 768px) ===== */
@@ -154,10 +155,6 @@
 
   /* Disable hover transforms on touch */
   .skill-category:hover {
-    transform: none;
-  }
-
-  .skill-item:hover {
     transform: none;
   }
 

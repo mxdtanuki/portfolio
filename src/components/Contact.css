@@ -408,7 +408,6 @@
   color: white;
   border-style: solid;
   border-color: var(--accent-pink);
-  transform: rotate(-5deg);
 }
 
 .social-card-text {

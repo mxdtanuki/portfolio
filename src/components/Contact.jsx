@@ -74,8 +74,8 @@ export default function Contact() {
             <span className="c-divider-dot">·</span>
           </div>
           <p className="contact-subtitle">
-            I'd love to hear from you! Feel free to reach out for any inquiries,
-            collaborations, or just to say hi.
+            I'd love to hear from you! Feel free to reach out for any inquiries
+            or collaborations.
           </p>
         </div>
 

@@ -212,6 +212,22 @@
   overflow-wrap: break-word;
 }
 
+.project-type-badge {
+  background: rgba(255, 193, 227, 0.4);
+  color: var(--text-dark);
+  padding: 0.3rem 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border: 1.5px solid var(--border-color);
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Uncomment below to use year styling instead of badge */
+/*
 .project-year {
   background: linear-gradient(
     135deg,
@@ -228,6 +244,7 @@
   letter-spacing: 0.5px;
   flex-shrink: 0;
 }
+*/
 
 .project-role {
   color: var(--accent-pink);
@@ -540,10 +557,22 @@
   }
 
   .project-role {
-    order: 3;
     font-size: 0.82rem;
     margin-top: 0.15rem;
   }
+
+  .project-type-badge {
+    font-size: 0.65rem;
+    padding: 0.25rem 0.65rem;
+  }
+
+  /* Uncomment below for year styling */
+  /*
+  .project-year {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.7rem;
+  }
+  */
 
   .project-divider {
     width: 30px;
