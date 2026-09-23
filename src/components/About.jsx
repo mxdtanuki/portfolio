@@ -281,7 +281,8 @@ export default function About() {
         <span className="highlight">
           Polytechnic University of the Philippines
         </span>{" "}
-        with experience in Product Analysis, UI/UX Design, and System Testing.
+        with experience in product analysis, UI/UX design, system testing,
+        and digital content creation.
       </p>
 
       <p className="bio-text">
