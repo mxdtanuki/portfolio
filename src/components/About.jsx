@@ -261,45 +261,39 @@ export default function About() {
           </div>
         </div>
 
-<div className="about-content">
-  {/* Bio Card */}
-  <div className="bio-card">
-    <div className="bio-card-accent" />
-    <div className="bio-card-corner bio-corner-tl"></div>
-    <div className="bio-card-corner bio-corner-br"></div>
-    <div className="bio-card-inner">
-      <div className="bio-greeting">
-        <span className="greeting-wave">♡</span>
-        <span className="greeting-text">Hello there!</span>
-        <span className="greeting-line"></span>
-      </div>
-
-      <p className="bio-text">
-        I am an{" "}
-        <span className="highlight">Information Technology graduate</span>{" "}
-        from the{" "}
-        <span className="highlight">
-          Polytechnic University of the Philippines
-        </span>{" "}
-        with experience in product analysis, UI/UX design, system testing,
-        and digital content creation.
-      </p>
-
-      <p className="bio-text">
-        I enjoy creating{" "}
-        <span className="highlight">intuitive digital experiences</span>{" "}
-        by combining technical knowledge, design, and an understanding of{" "}
-        <span className="highlight">user needs</span>.
-      </p>
-
-      <div className="bio-tags">
-        <span className="bio-tag">☁ creative thinker</span>
-        <span className="bio-tag">✎ detail-oriented</span>
-        <span className="bio-tag">♡ passionate learner</span>
-      </div>
-    </div>
-  </div>
-</div>
+        <div className="about-content">
+          {/* Bio Card */}
+          <div className="bio-card">
+            <div className="bio-card-accent" />
+            <div className="bio-card-corner bio-corner-tl"></div>
+            <div className="bio-card-corner bio-corner-br"></div>
+            <div className="bio-card-inner">
+              <div className="bio-greeting">
+                <span className="greeting-wave">♡</span>
+                <span className="greeting-text">Hello there!</span>
+                <span className="greeting-line"></span>
+              </div>
+              <p className="bio-text">
+                I am an Information Technology student at the{" "}
+                <span className="highlight">
+                  Polytechnic University of the Philippines
+                </span>{" "}
+                with interests in frontend development, graphic design, and
+                creative digital experiences.
+              </p>
+              <p className="bio-text">
+                I enjoy building{" "}
+                <span className="highlight">responsive web interfaces</span> and
+                designing visual content that balances{" "}
+                <span className="highlight">functionality and aesthetics</span>.
+              </p>
+              <div className="bio-tags">
+                <span className="bio-tag">☁ creative thinker</span>
+                <span className="bio-tag">✎ detail-oriented</span>
+                <span className="bio-tag">♡ passionate learner</span>
+              </div>
+            </div>
+          </div>
 
           {/* ========== STATS OVERVIEW SECTION (COMMENTED OUT) ========== */}
           {/* Uncomment below to show stats overview with numbers */}
